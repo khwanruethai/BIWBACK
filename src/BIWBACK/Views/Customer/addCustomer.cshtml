@@ -1,0 +1,939 @@
+﻿@{
+    Layout = "_Layout";
+}
+<style>
+    .wizard {
+        margin: 20px auto;
+        background: #fff;
+    }
+
+        .wizard .nav-tabs {
+            position: relative;
+            margin: 40px auto;
+            margin-bottom: 0;
+            border-bottom-color: #e0e0e0;
+        }
+
+        .wizard > div.wizard-inner {
+            position: relative;
+        }
+
+    .connecting-line {
+        height: 2px;
+        background: #e0e0e0;
+        position: absolute;
+        width: 80%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 50%;
+        z-index: 1;
+    }
+
+    .wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+        color: #555555;
+        cursor: default;
+        border: 0;
+        border-bottom-color: transparent;
+    }
+
+    span.round-tab {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        display: inline-block;
+        border-radius: 100px;
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        text-align: center;
+        font-size: 25px;
+    }
+
+        span.round-tab i {
+            color: #555555;
+        }
+
+    .wizard li.active span.round-tab {
+        background: #fff;
+        border: 2px solid #5bc0de;
+    }
+
+        .wizard li.active span.round-tab i {
+            color: #5bc0de;
+        }
+
+    span.round-tab:hover {
+        color: #333;
+        border: 2px solid #333;
+    }
+
+    .wizard .nav-tabs > li {
+        width: 14%;
+    }
+
+    .wizard li:after {
+        content: " ";
+        position: absolute;
+        left: 46%;
+        opacity: 0;
+        margin: 0 auto;
+        bottom: 0px;
+        border: 5px solid transparent;
+        border-bottom-color: #5bc0de;
+        transition: 0.1s ease-in-out;
+    }
+
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        left: 46%;
+        opacity: 1;
+        margin: 0 auto;
+        bottom: 0px;
+        border: 10px solid transparent;
+        border-bottom-color: #5bc0de;
+    }
+
+    .wizard .nav-tabs > li a {
+        width: 70px;
+        height: 70px;
+        margin: 20px auto;
+        border-radius: 100%;
+        padding: 0;
+    }
+
+        .wizard .nav-tabs > li a:hover {
+            background: transparent;
+        }
+
+    .wizard .tab-pane {
+        position: relative;
+        padding-top: 50px;
+    }
+
+    .wizard h3 {
+        margin-top: 0;
+    }
+
+    .container {
+        width: 100% !important;
+    }
+
+    @@media( max-width : 100% ) {
+        .container {
+            width: 100% !important;
+        }
+
+        .wizard {
+            width: 90%;
+            height: auto !important;
+        }
+
+        span.round-tab {
+            font-size: 16px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .wizard .nav-tabs > li a {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .wizard li.active:after {
+            content: " ";
+            position: absolute;
+            left: 35%;
+        }
+    }
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        ข้อมูลลูกค้า
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!---wizard--->
+            <div class="container">
+                <div class="form-group">
+                    <div class="row">
+                        <section>
+                            @{ Html.BeginForm("inert_customer", "Customer",FormMethod.Post);}
+                            <div class="wizard">
+                                <div class="wizard-inner">
+
+                                    <div class="connecting-line"></div>
+                                    <ul class="nav nav-tabs" role="tablist">
+
+                                        <li role="presentation" class="active text-center">
+                                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-folder-open"></i>
+                                                </span>
+                                                <br />
+                                            </a>
+                                            <h4>ชื่อ-นามสกุล</h4>
+                                        </li>
+
+                                        <li role="presentation" class="disabled text-center">
+                                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-pencil"></i>
+                                                </span>
+                                            </a>
+                                            <h4>ที่อยู่ลูกค้า</h4>
+                                        </li>
+                                        <li role="presentation" class="disabled text-center">
+                                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-picture"></i>
+                                                </span>
+                                            </a>
+                                            <h4>การติดต่อ</h4>
+                                        </li>
+                                        <li role="presentation" class="disabled text-center">
+                                            <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Step 4">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-picture"></i>
+                                                </span>
+                                            </a>
+                                            <h4>เครดิต</h4>
+                                        </li>
+                                        <li role="presentation" class="disabled text-center">
+                                            <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab" title="Step 5">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-picture"></i>
+                                                </span>
+                                            </a>
+                                            <h4>สายการขาย</h4>
+                                        </li>
+                                        <li role="presentation" class="disabled text-center">
+                                            <a href="#step6" data-toggle="tab" aria-controls="step6" role="tab" title="Step 6">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-picture"></i>
+                                                </span>
+                                            </a>
+                                            <h4>สถานที่จัดส่ง</h4>
+                                        </li>
+
+                                        <li role="presentation" class="disabled text-center">
+                                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-ok"></i>
+                                                </span>
+                                            </a>
+                                            <h4>เสร็จสมบูรณ์</h4>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div role="form">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active responsive" role="tabpanel" id="step1" style="margin: 0% 7% 0% 5%;">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    @*<div class="col-md-2">
+                                                        รหัส
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.TextBox("cus_code", "", new { @class = "form-control" })
+                                                        
+                                                    </div>*@
+                                                    <div class="col-md-2">
+                                                      <span class="text-red">*</span>  ประเภทลูกค้า
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                       @Html.DropDownList("cus_type", ViewData["cus_type"] as List<SelectListItem>, new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ชื่อ
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.DropDownList("cus_prefix", ViewData["prefix"] as List<SelectListItem>, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("cus_name", "", new { @class = "form-control" , @placeholder = "ชื่อลูกค้า/ ร้านค้า / บริษัท"})
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.TextBox("cus_lastname", "", new { @class = "form-control"})
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ชื่อผู้ติดต่อ
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("cus_name_contact", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        เลขที่การค้า
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("cus_trade", "", new { @class = "form-control" })
+
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        เลขที่ผู้เสียภาษี
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("cus_tax", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="form-group text-right">
+
+                                                <button type="button" class="btn btn-primary next-step responsive">ดำเนินการต่อ</button>
+
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane responsive" role="tabpanel" id="step2" style="margin: 0% 7% 0% 5%;">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ที่อยู่
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("add_num", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ซอย
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("add_alley", "", new { @class = "form-control" })
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ถนน
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("add_road", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        จังหวัด
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("add_province", ViewData["province"] as List<SelectListItem>, new { @class = "form-control select2", @onchange = "optionProvince();", @style= "width: 100%;" })
+                                                    </div>
+                                                  
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        เขต/อำเภอ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="amphur">
+                                                            @Html.DropDownList("add_amphur", ViewData["amphur"] as List<SelectListItem>, new { @class = "form-control select2" , @onchange = "optionAmphur();", @style = "width: 100%;" })
+
+                                                        </div>
+                                                        </div>
+                                                    <div class="col-md-2">
+                                                        ตำบล/แขวง
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="district">
+                                                            @Html.DropDownList("add_distict", ViewData["district"] as List<SelectListItem>, new { @class = "form-control select2", @style = "width: 100%;" })
+                                                        </div>
+                                                         </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        รหัสไปรษณีย์
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("add_postcode", "", new { @class = "form-control" })
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        สถานะ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("add_type_status", new List<SelectListItem> { new SelectListItem { Text = "เลือกสถานะลูกค้า", Value = "N"}, new SelectListItem { Text = "สำนักงานใหญ่", Value="C"} , new SelectListItem { Text = "สาขา", Value ="B"}, new SelectListItem { Text = "บุคคล", Value="P"} }, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        สาขาที่
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("add_branch", "", new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button" class="btn btn-default prev-step">ก่อนหน้า</button>
+                                                        <button type="button" class="btn btn-primary next-step responsive">ดำเนินการต่อ</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane responsive" role="tabpanel" id="step3" style="margin: 0% 7% 0% 5%;">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        เบอร์โทรศัพท์
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("ct_tel", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        เบอร์โทรสาร
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("ct_fax", "", new { @class = "form-control" })
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        E-mail
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("ct_email", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        www
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("ct_web", "", new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button" class="btn btn-default prev-step">ก่อนหน้า</button>
+                                                        <button type="button" class="btn btn-primary next-step responsive">ดำเนินการต่อ</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane responsive" role="tabpanel" id="step4" style="margin: 0% 7% 0% 5%;">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                       วงเงินเครดิต
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("credit_money", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        เครดิต
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("credit_condition", ViewData["condition"] as List<SelectListItem>, new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button" class="btn btn-default prev-step">ก่อนหน้า</button>
+                                                        <button type="button" class="btn btn-default next-step">ข้าม</button>
+                                                        <button type="button" class="btn btn-primary btn-info-full next-step responsive">ดำเนินการต่อ</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane responsive" role="tabpanel" id="step5" style="margin: 0% 7% 0% 5%;">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        สายการขาย
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("line_sale",  ViewData["line_sale"] as List<SelectListItem>   , new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ชื่อเซลล์
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("name_sale", "", new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button" class="btn btn-default prev-step">ก่อนหน้า</button>
+                                                        <button type="button" class="btn btn-default next-step">ข้าม</button>
+                                                        <button type="button" class="btn btn-primary btn-info-full next-step responsive">ดำเนินการต่อ</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane responsive" role="tabpanel" id="step6" style="margin: 0% 7% 0% 5%;">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ชื่อผู้รับสินค้า
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("at_customer_name", "", new { @class = "form-control" })
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="col-md-12 text-right">
+                                                <span class="btn btn-primary useAddress"><i class="fa fa-copy"></i> ใช้ที่อยู่ลูกค้า</span>
+                                            </div>
+                                            <hr />
+                                            <br />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ที่อยู่
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("at_num", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ซอย
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("at_alley", "", new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ถนน
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("at_road", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        จังหวัด
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="at_province">
+                                                            @Html.DropDownList("at_province", ViewData["province"] as List<SelectListItem>, new { @class = "form-control select2", @onchange = "optionProvinceAt();", @style = "width: 100%;" })
+                                                        </div>
+
+                                                    </div>
+                                                   
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        เขต/อำเภอ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="at_amphur">
+                                                            @Html.DropDownList("at_amphur", ViewData["amphur"] as List<SelectListItem>, new { @class = "form-control select2" , @onchange="optionAmphurAt();", @style = "width: 100%;" })
+                                                        </div>
+                                                       
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ตำบล/แขวง
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="at_district">
+                                                            @Html.DropDownList("at_district", ViewData["district"] as List<SelectListItem>, new { @class = "form-control select2", @style = "width: 100%;" })
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        รหัสไปรษณีย์
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("at_postcode", "", new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button" class="btn btn-default prev-step">ก่อนหน้า</button>
+                                                        <button type="button" class="btn btn-default next-step">ข้าม</button>
+                                                        <button type="button" class="btn btn-primary btn-info-full next-step responsive">ดำเนินการต่อ</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane responsive" role="tabpanel" id="complete" style="margin: 0% 7% 0% 5%;">
+                                            <h3>กรอกข้อมูลครบถ้วนแล้วใช่หรือไม่?</h3>
+                                            <p>กรูณากดบันทึกเพื่อทำการบันทึกข้อมูลลูกค้านี้</p>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="submit" class="btn btn-primary Continue">บันทึก</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <hr>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            @{ Html.EndForm();}
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!----/wizard------>
+        </div>
+    </div>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <br />
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">ค้างชำระ ณ วันที่เสนอราคา</a></li>
+                        <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="true">รายการส่งของ(ย้อนหลัง 1 ปี)</a></li>
+                       
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        ยอดยกมา
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                    </div>
+                                    <div class="col-sm-2">
+                                        ซื้อเพิ่ม
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        ลดหนี้
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                    </div>
+                                    <div class="col-sm-2">
+                                       เพิ่มหนี้
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        ชำระเงิน
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                    </div>
+                                    <div class="col-sm-2">
+                                        ค้างชำระ
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                   
+                                    <div class="col-sm-offset-6 col-sm-2">
+                                        วงเงินเครดิต
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_2">
+                          
+                                          <div class="table-responsive">
+                                              <table class="table table-bordered table-responsive">
+                                                  <thead>
+                                                      <tr>
+                                                          <th>กำหนดชำระ</th>
+                                                          <th>ยอดค้างชำระ</th>
+                                                          <th>ยอดชำระ</th>
+                                                          <th>ยอดเงิน</th>
+                                                          <th>ใบเสนอราคา</th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      <tr>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                          <td></td>
+                                                      </tr>
+                                                  </tbody>
+                                              </table>
+                                        
+                              </div>
+                          </div>
+                        </div>
+                        <!-- /.tab-pane -->
+                       
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    function stepWizard() {
+
+        //Initialize tooltips
+        $('.nav-tabs > li a[title]').tooltip();
+
+        //Wizard
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+            var $target = $(e.target);
+
+            if ($target.parent().hasClass('disabled')) {
+                return false;
+            }
+        });
+
+        $(".next-step").click(function (e) {
+
+            var $active = $('.wizard .nav-tabs li.active');
+            $active.next().removeClass('disabled');
+            nextTab($active);
+
+        });
+        $(".prev-step").click(function (e) {
+
+            var $active = $('.wizard .nav-tabs li.active');
+            prevTab($active);
+
+        });
+
+
+        function nextTab(elem) {
+            $(elem).next().find('a[data-toggle="tab"]').click();
+        }
+        function prevTab(elem) {
+            $(elem).prev().find('a[data-toggle="tab"]').click();
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        stepWizard();
+    })
+</script>
+<script>
+    $(document).on('click', '.Continue', function () {
+
+       // alert('111');
+    })
+</script>
+<script>
+    $(document).on('change', '#cus_prefix', function () {
+
+       var x =   $('#cus_prefix').val();
+        
+       $.get('../../Prefix/prefix_end?id=' + x, function (data) {
+
+
+           $('#cus_lastname').val(data);
+
+       })
+
+    })
+</script>
+<script>
+
+    function optionProvince() {
+
+        var x = $('#add_province').val();
+
+        $.get('../../Amphur/option_amphur?id=' + x, function (data) {
+
+            $('.amphur').html('');
+            $('.amphur').html('<select id="add_amphur" name="add_amphur" class="form-control"  style= "width: 100%;" onChange="optionAmphur();">' + data + '</select>');
+            $('#add_amphur').select2();
+        })
+
+    }
+    function optionAmphur() {
+
+        var x = $('#add_amphur').val();
+
+
+        //alert(x);
+        $.get('../../District/option_district?id=' + x, function (data) {
+
+            $('.district').html('');
+            $('.district').html('<select id="add_distict" style= "width: 100%;" name="add_distict" class="form-control">' + data + '</select>');
+            $('#add_distict').select2();
+        })
+
+    }
+</script>
+<script>
+
+    function optionProvinceAt() {
+
+        var x = $('#at_province').val();
+
+        $.get('../../Amphur/option_amphur?id=' + x, function (data) {
+
+            $('.at_amphur').html('');
+            $('.at_amphur').html('<select id="at_amphur" name="at_amphur" class="form-control"  style= "width: 100%;" onChange="optionAmphurAt();">' + data + '</select>');
+            $('#at_amphur').select2();
+        })
+
+    }
+    function optionAmphurAt() {
+
+        var x = $('#at_amphur').val();
+
+
+        //alert(x);
+        $.get('../../District/option_district?id=' + x, function (data) {
+
+            $('.at_district').html('');
+            $('.at_district').html('<select id="at_district" style= "width: 100%;" name="at_district" class="form-control">' + data + '</select>');
+            $('#at_district').select2();
+        })
+
+    }
+</script>
+<script>
+    $(document).on('click', '.useAddress', function () {
+
+        var num = $('#add_num').val();
+        var alley = $('#add_alley').val();
+        var road = $('#add_road').val();
+        var province = $('#add_province').val();
+        var amphur = $('#add_amphur').val();
+        var district = $('#add_distict').val();
+        var postcode = $('#add_postcode').val();
+        
+
+        $('#at_num').val(num);
+        $('#at_alley').val(alley);
+        $('#at_road').val(road);
+        $('#at_district').val(district);
+        $('#at_district').select2();
+        $('#at_amphur').val(amphur)
+        $('#at_amphur').select2();
+        $('#at_province').val(province);
+        $('#at_province').select2();
+        $('#at_postcode').val(postcode);
+        
+
+    })
+</script>
+<script>
+    $(document).on('change')
+</script>
+

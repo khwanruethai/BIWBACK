@@ -1,0 +1,550 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BIWBACK</title>
+
+    <environment names="Development">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="~/lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="~/lib/bower_components/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="~/lib/bower_components/Ionicons/css/ionicons.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="~/lib/dist/css/AdminLTE.min.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="~/lib/dist/css/skins/_all-skins.min.css">
+        <!-- Morris chart -->
+        <link rel="stylesheet" href="~/lib/bower_components/morris.js/morris.css">
+        <!-- jvectormap -->
+        <link rel="stylesheet" href="~/lib/bower_components/jvectormap/jquery-jvectormap.css">
+        <!-- Date Picker -->
+
+        <link href="~/lib/datepicker-th/css/datepicker.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/lib/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+        <!-- Daterange picker -->
+        <link rel="stylesheet" href="~/lib/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+        <!-- bootstrap wysihtml5 - text editor -->
+        <link rel="stylesheet" href="~/lib/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="~/lib/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="~/lib/bower_components/select2/dist/css/select2.min.css">
+        <!-- iCheck -->
+        <link href="~/lib/plugins/sweet/sweetalert.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/lib/plugins/iCheck/all.css">
+        <link rel="stylesheet" href="~/lib/plugins/iCheck/flat/blue.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/site.css" />*@
+    </environment>
+    <environment names="Staging,Production">
+        @*<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />*@
+    </environment>
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>B</b>IW</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b>BIW</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!----แจ้งเตือนการสั่งซื้อ------>
+                        <li class="dropdown messages-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="label label-danger">4</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">มี 4 รายการสินค้ากำลังจะหมด</li>
+                                <li>
+                                    <!-- inner menu: contains the actual data -->
+                                    <ul class="menu">
+                                        <li>
+                                            <!-- start message -->
+                                            <a href="#">
+                                                <div class="pull-left">
+                                                    <img src="~/images/shop.jpg" class="img-circle" alt="User Image">
+                                                </div>
+                                                <h4>
+                                                    BIW116 : ผ้า
+                                                    <small><i class="fa fa-clock-o"></i> 10 ต.ค. 60</small>
+                                                </h4>
+                                                <p>รหัส 6211</p>
+                                                <p>คงเหลือ 10 เมตร</p>
+                                            </a>
+                                        </li>
+                                        <!-- end message -->
+                                        <li>
+                                            <a href="#">
+                                                <div class="pull-left">
+                                                    <img src="~/images/shop.jpg" class="img-circle" alt="User Image">
+                                                </div>
+                                                <h4>
+                                                    BIW317 : โซ่ใส
+                                                    <small><i class="fa fa-clock-o"></i> 9 ต.ค. 60</small>
+                                                </h4>
+                                                <p>รหัส 0501</p>
+                                                <p>คงเหลือ 5 เมตร</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="pull-left">
+                                                    <img src="~/images/shop.jpg" class="img-circle" alt="User Image">
+                                                </div>
+                                                <h4>
+                                                    BIW317 : ท่อ
+                                                    <small><i class="fa fa-clock-o"></i> 8 ต.ค. 60</small>
+                                                </h4>
+                                                <p>รหัส 0201</p>
+                                                <p>คงเหลือ 8 ชิ้น</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="pull-left">
+                                                    <img src="~/images/shop.jpg" class="img-circle" alt="User Image">
+                                                </div>
+                                                <h4>
+                                                    BIW320 : สปริงซ้าย
+                                                    <small><i class="fa fa-clock-o"></i> 7 ต.ค. 60</small>
+                                                </h4>
+                                                <p>รหัส 0801</p>
+                                                <p>คงเหลือ 20 ชิ้น</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="pull-left">
+                                                    <img src="~/images/shop.jpg" class="img-circle" alt="User Image">
+                                                </div>
+                                                <h4>
+                                                    BIW320 : สปริงขวา
+                                                    <small><i class="fa fa-clock-o"></i> 7 ต.ค. 60</small>
+                                                </h4>
+                                                <p>รหัส 0802</p>
+                                                <p>คงเหลือ 10 ชิ้น</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="footer"><a href="#">ดูการแจ้งเตือนทั้งหมด</a></li>
+                            </ul>
+                        </li>
+                        <!----end แจ้งเตือนการสั่งซื้อ------>
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="~/lib/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Alexander Pierce</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="~/lib/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <p>
+                                        Alexander Pierce - แอดมินดูแลระบบ
+                                        @*<small>Member since Nov. 2012</small>*@
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">ออกจากระบบ</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/lib/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Alexander Pierce</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="active treeview">
+                        <a asp-area="" asp-controller="Stock" asp-action="Index">
+                            <i class="fa fa-dashboard"></i> <span>ระบบสต็อก</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active"><a asp-area="" asp-controller="Stock" asp-action="getStock"><i class="fa fa-circle-o"></i> รับเข้าวัตถุดิบ(New)</a></li>
+                            <li><a asp-area="" asp-controller="Stock" asp-action="Index"><i class="fa fa-circle-o"></i> รับเข้าวัตถุดิบ</a></li>
+                            <li><a asp-area="" asp-controller="Stock" asp-action="extract"><i class="fa fa-circle-o"></i> เบิกวัตถุดิบ</a></li>
+                            <li><a asp-area="" asp-controller="Stock" asp-action="turn"><i class="fa fa-circle-o"></i> คืนวัถุดิบ</a></li>
+                            <li><a asp-area="" asp-controller="Stock" asp-action="repairStock"><i class="fa fa-circle-o"></i> ปรับปรุงสต็อกวัตถุดิบ</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-files-o"></i>
+                            <span>ระบบขาย</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a asp-area="" asp-controller="Sale" asp-action="Quotation"><i class="fa fa-circle-o"></i> ใบเสนอราคา</a></li>
+                            <li><a asp-area="" asp-controller="Sale" asp-action="production"><i class="fa fa-circle-o"></i> ใบสั่งผลิต</a></li>
+                            <li><a asp-area="" asp-controller="Sale" asp-action="transport_search"><i class="fa fa-circle-o"></i> ใบส่งของ มัดจำ/แจ้งหนี้</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a asp-action="Index" asp-controller="Book" asp-area="">
+                            <i class="fa fa-bookmark"></i> <span>รายการจอง</span>
+                            <span class="pull-right-container">
+                                <small class="label pull-right label-warning">5</small>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-action="endBook" asp-controller="Book" asp-area="">
+                            <i class="fa fa-bookmark"></i> <span>รายการจองกำลังจะสิ้นสุด</span>
+                            <span class="pull-right-container">
+                                <small class="label pull-right bg-red">3</small>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="pages/widgets.html">
+                            <i class="fa fa-th"></i> <span>รายงานระบบสต็อก</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a asp-area="" asp-controller="reportStock" asp-action="Index"><i class="fa fa-circle-o"></i> รายงานการสั่งซื้อวัตถุดิบ</a></li>
+                            <li><a asp-area="" asp-controller="reportStock" asp-action="reportExtract"><i class="fa fa-circle-o"></i> รายงานการเบิกวัตถุดิบ</a></li>
+                            <li><a asp-area="" asp-controller="reportStock" asp-action="reportStore"><i class="fa fa-circle-o"></i> รายงานคลังสินค้า</a></li>
+                            <li><a asp-area="" asp-controller="reportStock" asp-action="reportProduction"><i class="fa fa-circle-o"></i> รายงานวัตถุดิบที่ใช้ผลิต</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-pie-chart"></i>
+                            <span>รายงานระบบขาย</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a asp-area="" asp-controller="reportSale" asp-action="saleReport"><i class="fa fa-circle-o"></i> ยอดขาย</a></li>
+                            <li><a asp-area="" asp-controller="reportSale" asp-action="reportMonth"><i class="fa fa-circle-o"></i> สรุปยอดขายประจำเดือน</a></li>
+                            <li><a asp-area="" asp-controller="reportSale" asp-action="reportQuarter"><i class="fa fa-circle-o"></i> สรุปยอดขายรายไตรมาส</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>ข้อมูลหลัก</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i> ข้อมูลสต็อก/วัตถุดิบ
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a asp-area="" asp-controller="Suplier" asp-action="agent"><i class="fa fa-circle-o"></i> ข้อมูลผู้ขายวัตถุดิบ</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="warehouse"><i class="fa fa-circle-o"></i> คลังสินค้า/วัตถุดิบ</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="shelf"><i class="fa fa-circle-o"></i> ชั้นวางสินค้า/วัตถุดิบ</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="typeMaterial"><i class="fa fa-circle-o"></i> ข้อมูลประเภทกลุ่มวัตถุดิบ</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="groupMaterial"><i class="fa fa-circle-o"></i> ข้อมูลกลุ่มวัตถุดิบ</a></li>
+                                    <li><a asp-area="" asp-controller="Material" asp-action="material"><i class="fa fa-circle-o"></i> ข้อมูลวัตถุดิบ</a></li>
+                                </ul>
+                            </li>
+                            <!---------------->
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i> ข้อมูลการขาย/สินค้า
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a asp-area="" asp-controller="Customer" asp-action="customer"><i class="fa fa-circle-o"></i> ข้อมูลลูกค้า</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="customerType"><i class="fa fa-circle-o"></i> ข้อมูลกลุ่มลูกค้า</a></li>
+                                    <li><hr /></li>
+                                    <li><a asp-area="" asp-controller="Product" asp-action="product"><i class="fa fa-circle-o"></i> ข้อมูลสินค้า</a></li>
+                                    <li><a asp-area="" asp-controller="Mash" asp-action="mash"><i class="fa fa-circle-o"></i> ส่วนประกอบสินค้า</a></li>
+                                    <li><hr /></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="modelProduct"><i class="fa fa-circle-o"></i> แบบสินค้า</a></li>
+                                    <li><a asp-area="" asp-controller="Mash" asp-action="modelMash"><i class="fa fa-circle-o"></i> ส่วนประกอบแบบสินค้า</a></li>
+                                    <li><hr /></li>
+                                    <li><a asp-area="" asp-controller="Formula" asp-action="formula"><i class="fa fa-circle-o"></i> สูตรคำนวณการใช้วัตถุดิบ</a></li>
+                                    <li><hr /></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="groupProduct"><i class="fa fa-circle-o"></i> ประเภทกลุ่มสินค้า</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="payment"><i class="fa fa-circle-o"></i> เงื่อนไขการชำระเงิน</a></li>
+                                </ul>
+                            </li>
+                            <!---------------->
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i> ข้อมูลทั่วไป
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a asp-area="" asp-controller="Information" asp-action="position"><i class="fa fa-circle-o"></i> ตำแหน่ง</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="unit"><i class="fa fa-circle-o"></i> หน่วยนับ</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="prefix"><i class="fa fa-circle-o"></i> คำนำหน้าชื่อ</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="province"><i class="fa fa-circle-o"></i> จังหวัด</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="line"><i class="fa fa-circle-o"></i> ประเภทสาย</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="typePayment"><i class="fa fa-circle-o"></i> ประเภทการชำระเงิน</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="employee"><i class="fa fa-circle-o"></i> ข้อมูลพนักงาน</a></li>
+                                    <li><a asp-area="" asp-controller="Information" asp-action="typeEmp"><i class="fa fa-circle-o"></i> สาย/พนักงานขาย</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i> <span>ข้อมูลระบบ</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a asp-area="" asp-controller="Company" asp-action="Index"><i class="fa fa-circle-o"></i> ข้อมูลบริษัท</a></li>
+                            @*<li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> เพิ่มผู้ใช้ระบบ</a></li>
+                                <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> กลุ่มผู้ใช้ระบบ</a></li>*@
+                        </ul>
+                    </li>
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /.content-wrapper -->
+        @*<hr />*@
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.0
+            </div>
+            <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+            reserved.
+        </footer>
+
+        <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+    </div>
+
+    <environment names="Development">
+        <!-- jQuery 3 -->
+        <script src="~/lib/bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="~/lib/bower_components/jquery-ui/jquery-ui.min.js"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="~/lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Morris.js charts -->
+        <script src="~/lib/bower_components/raphael/raphael.min.js"></script>
+        <script src="~/lib/bower_components/morris.js/morris.min.js"></script>
+        <!-- Sparkline -->
+        <script src="~/lib/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+        <!-- jvectormap -->
+        <script src="~/lib/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="~/lib/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="~/lib/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+        <!-- daterangepicker -->
+        <script src="~/lib/bower_components/moment/min/moment.min.js"></script>
+        <script src="~/lib/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <!-- datepicker -->
+        <script src="~/lib/datepicker-th/js/bootstrap-datepicker.js"></script>
+        @*<script src="~/lib/datepicker-th/js/bootstrap-datepicker.js"></script>*@
+        <script src="~/lib/datepicker-th/js/bootstrap-datepicker-thai.js"></script>
+        <script src="~/lib/datepicker-th/js/locales/bootstrap-datepicker.th.js"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="~/lib/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <!-- Slimscroll -->
+        <script src="~/lib/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="~/lib/bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- iCheck 1.0.1 -->
+        <script src="~/lib/plugins/iCheck/icheck.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="~/lib/dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="~/lib/dist/js/pages/dashboard.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="~/lib/dist/js/demo.js"></script>
+        <!-- DataTables -->
+        <script src="~/lib/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="~/lib/bower_components/select2/dist/js/select2.full.min.js"></script>
+        <script src="~/lib/plugins/sweet/sweetalert.min.js"></script>
+        <script>
+            $('.data_table').DataTable();
+            //Date picker
+            $('.datepicker').datepicker({
+                autoclose: true,
+                language: 'th-th',
+                format: 'dd/mm/yyyy',
+                isBuddhist: true
+            });
+            $('.select2').select2()
+        </script>
+        <script src="~/lib/plugins/iCheck/icheck.min.js"></script>
+        <!-- Page Script -->
+        <script>
+  $(function () {
+    //Enable iCheck plugin for checkboxes
+    //iCheck for checkbox and radio inputs
+    $('.mailbox-messages input[type="checkbox"]').iCheck({
+      checkboxClass: 'icheckbox_flat-blue',
+      radioClass: 'iradio_flat-blue'
+    });
+
+    //Enable check and uncheck all functionality
+    $(".checkbox-toggle").click(function () {
+      var clicks = $(this).data('clicks');
+      if (clicks) {
+        //Uncheck all checkboxes
+        $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+        $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+      } else {
+        //Check all checkboxes
+        $(".mailbox-messages input[type='checkbox']").iCheck("check");
+        $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+      }
+      $(this).data("clicks", !clicks);
+    });
+
+    //Handle starring for glyphicon and font awesome
+    $(".mailbox-star").click(function (e) {
+      e.preventDefault();
+      //detect type
+      var $this = $(this).find("a > i");
+      var glyph = $this.hasClass("glyphicon");
+      var fa = $this.hasClass("fa");
+
+      //Switch states
+      if (glyph) {
+        $this.toggleClass("glyphicon-star");
+        $this.toggleClass("glyphicon-star-empty");
+      }
+
+      if (fa) {
+        $this.toggleClass("fa-star");
+        $this.toggleClass("fa-star-o");
+      }
+    });
+  });
+        </script>
+        <script>
+  $(function () {
+    //Enable iCheck plugin for checkboxes
+    //iCheck for checkbox and radio inputs
+    $('.mailbox-messages-check input[type="checkbox"]').iCheck({
+      checkboxClass: 'icheckbox_flat-red',
+      radioClass: 'iradio_flat-red'
+    });
+
+    //Enable check and uncheck all functionality
+    $(".checkbox-toggle").click(function () {
+      var clicks = $(this).data('clicks');
+      if (clicks) {
+        //Uncheck all checkboxes
+        $(".mailbox-messages-check input[type='checkbox']").iCheck("uncheck");
+        $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+      } else {
+        //Check all checkboxes
+        $(".mailbox-messages-check input[type='checkbox']").iCheck("check");
+        $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+      }
+      $(this).data("clicks", !clicks);
+    });
+
+    //Handle starring for glyphicon and font awesome
+  
+  });
+  //iCheck for checkbox and radio inputs
+  $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+  })
+  //Red color scheme for iCheck
+  $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass: 'iradio_minimal-red'
+  })
+  //Flat red color scheme for iCheck
+  $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green aa',
+      radioClass: 'iradio_flat-green'
+  })
+
+        </script>
+        @*<script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>*@
+    </environment>
+    <environment names="Staging,Production">
+        @*<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>*@
+    </environment>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

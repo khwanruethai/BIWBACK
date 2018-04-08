@@ -1,0 +1,162 @@
+﻿@{
+    Layout = "_Layout";
+}
+<link href="~/css/sweetalert.css" rel="stylesheet" />
+<style>
+ 
+    td {
+    
+    /*background-color:#f39c12 ;*/
+    color:red;
+   
+    }
+    .mailbox-star {
+
+        color:red !important;
+    }
+    .mailbox-name {
+
+        color:red !important;
+    }
+</style>
+<section class="content-header">
+    <h1>
+        รายการจองกำลังจะสิ้นสุด
+        @*<small>13 รายการจอง</small>*@
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+
+        <!-- /.col -->
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายการจองกำลังจะสิ้นสุดทั้งหมด 3 รายการ</h3>
+                    <div class="box-tools pull-right">
+                        <div class="has-feedback">
+                            <input type="text" class="form-control input-sm" placeholder="ค้นหารายการจอง">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="mailbox-controls">
+                        <!-- Check all button -->
+                        <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                            <i class="fa fa-square-o"></i>
+                        </button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+
+                        </div>
+                        <!-- /.btn-group -->
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+
+                        <!-- /.pull-right -->
+                    </div>
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>เลือก</th>
+                                    <th>Invoice no.</th>
+                                    <th>ลูกค้า</th>
+                                    <th>ราคาสุทธิ</th>
+                                    <th>วันที่จอง</th>
+                                    <th>วันที่สิ้นสุดการจอง</th>
+                                    <th>จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td ><input type="checkbox"></td>
+                                    <td class="mailbox-star"><a href="#" style="color:red;">INV00001</a></td>
+                                    <td class="mailbox-name"><a href="#" style="color:red;">Alexander Pierce</a></td>
+                                    <td class="mailbox-subject"> 15,000 </td>
+                                    <td class="mailbox-attachment">1/02/61</td>
+                                    <td class="mailbox-date">7/01/61</td>
+                                    <td>
+                                        <a class="btn btn-primary bookup"><i class="fa fa-calendar"></i> จองต่อ </a>
+                                        <a class="btn btn-danger bookup"><i class="fa fa-trash-o"></i> ยกเลิกการจอง</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td class="mailbox-star"><a href="#" style="color:red;">INV00002</a></td>
+                                    <td class="mailbox-name"><a href="#" style="color:red;">Alexander Pierce</a></td>
+                                    <td class="mailbox-subject"> 15,000 </td>
+                                    <td class="mailbox-attachment">1/02/61</td>
+                                    <td class="mailbox-date">7/01/61</td>
+                                    <td>
+                                        <a class="btn btn-primary bookup"><i class="fa fa-calendar"></i> จองต่อ </a>
+                                        <a class="btn btn-danger"><i class="fa fa-trash-o"></i> ยกเลิกการจอง</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td class="mailbox-star"><a href="#" style="color:red;">INV00003</a></td>
+                                    <td class="mailbox-name"><a href="#" style="color:red;">Alexander Pierce</a></td>
+                                    <td class="mailbox-subject"> 15,000 </td>
+                                    <td class="mailbox-attachment">1/02/61</td>
+                                    <td class="mailbox-date">7/01/61</td>
+                                    <td>
+                                        <a class="btn btn-primary bookup"><i class="fa fa-calendar"></i> จองต่อ </a>
+                                        <a class="btn btn-danger"><i class="fa fa-trash-o"></i> ยกเลิกการจอง</a>
+                                    </td>
+                                </tr>
+                           
+                            </tbody>
+                        </table>
+                        <!-- /.table -->
+                    </div>
+                    <!-- /.mail-box-messages -->
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /. box -->
+        </div>
+                <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script src="~/js/sweetalert.min.js"></script>
+<script>
+    $(document).on('click', '.bookup', function () {
+
+        swal({
+            title: "จองต่อ!",
+            text: "ระบุจำนวนวัน ที่ต้องการจองต่อ",
+            type: "input",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            inputPlaceholder: "ระบุจำนวนวัน"
+        }, function (inputValue) {
+            if (inputValue === false) return false;
+            if (inputValue === "") {
+                swal.showInputError("กรุณาระบุจำนวนวันให้ถูกต้อง!");
+                return false
+            } else if (inputValue > 7) {
+                swal.showInputError("กรุณาระบุจำนวนวันให้ถูกต้อง จองต่อได้ไม่เกิน 7 วัน!");
+                return false
+
+            } else if (inputValue <= 7) {
+
+                swal("ข้อมูลถูกต้อง!", "คุณต้องการจองต่ออีก : " + inputValue +" วัน  ระยะเวลาการจองจะสิ้นสุด ณ วันจันทร์ ที่ 12 กุมภาพันธ์ 2561", "success");
+            } else {
+
+                swal.showInputError("กรุณาระบุจำนวนวันให้ถูกต้อง!");
+                return false
+
+            }
+           
+        });
+
+    })
+</script>

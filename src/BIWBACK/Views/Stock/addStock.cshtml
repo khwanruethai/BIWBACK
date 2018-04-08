@@ -1,0 +1,442 @@
+﻿@{
+    Layout = "_Layout";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        รับเข้าวัตถุดิบ
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> สต็อก</a></li>
+        <li class="active">รับเข้าวัตถุดิบ</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">รับเข้าวัตถุดิบ</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    วันที่รับเข้า
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-2">
+                                    กำหนดชำระเงิน
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    เลขที่รับเข้า
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-2">
+                                    เงื่อนไขการชำระเงิน
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.DropDownList("txt1", new List<SelectListItem>
+                                               {
+                                    new SelectListItem { Selected = true, Text = "10วัน", Value = "1"},
+                                    new SelectListItem { Text = "45วัน", Value = "2"},
+                                               }, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    เลขที่อ้างอิง
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-2">
+                                    คลังวัตถุดิบ
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.DropDownList("txt1", new List<SelectListItem>
+                                               {
+                                    new SelectListItem { Selected = true, Text = "A01 บางกะปิ", Value = "1"},
+                                    new SelectListItem { Text = "A02 สุวินทวงศ์", Value = "2"},
+                                               }, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    ตัวแทนจำหน่าย
+                                </div>
+                                <div class="col-sm-10">
+                                    @Html.DropDownList("txt1", new List<SelectListItem>
+                                               {
+                                    new SelectListItem { Selected = true, Text = "560100001 บริษัท เคมพลาส จำกัด", Value = "1"},
+                                               }, new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    ชื่อผู้ติดต่อ
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-2">
+                                    เบอร์โทร
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    ที่อยู่
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.TextArea("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-2">
+                                    หมายเหตุ
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.TextArea("txt1", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+           <div class="col-md-6">
+               <div class="box box-primary">
+                   <div class="box-header with-border">
+                       <h3 class="box-title">ค่าใช้จ่ายทั้งหมด</h3>
+                       <div class="box-tools pull-right">
+                           <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                               <i class="fa fa-minus"></i>
+                           </button>
+                       </div>
+                   </div>
+                   <div class="box-body" style="">
+                       <div class="form-group">
+                           <div class="row">
+                               <div class="col-sm-2">
+                                   ส่วนลด (%)
+                               </div>
+                               <div class="col-sm-4">
+                                   @Html.TextBox("txt1", "", new { @class = "form-control" })
+                               </div>
+                               <div class="col-sm-2">
+                                   รวมส่วนลด (บาท)
+                               </div>
+                               <div class="col-sm-4">
+                                   @Html.TextBox("txt1", "", new { @class = "form-control", @readonly = "true" })
+                               </div>
+                           </div>
+                       </div>
+                       <div class="form-group">
+                           <div class="row">
+                               <div class="col-sm-2">
+                                   Vat (%)
+                               </div>
+                               <div class="col-sm-4">
+                                   @Html.TextBox("txt1", "", new { @class = "form-control" })
+                               </div>
+                               <div class="col-sm-2">
+                                   Vat (บาท)
+                               </div>
+                               <div class="col-sm-4">
+                                   @Html.TextBox("txt1", "", new { @class = "form-control", @readonly = "true" })
+                               </div>
+                           </div>
+                       </div>
+                       <div class="form-group">
+                           <div class="row">
+                               <div class="col-sm-2">
+                                   จำนวนเงิน
+                               </div>
+                               <div class="col-sm-4">
+                                   @Html.TextBox("txt1", "", new { @class = "form-control", @readonly = "true" })
+                               </div>
+                               <div class="col-sm-2">
+                                   สุทธิ (บาท)
+                               </div>
+                               <div class="col-sm-4">
+                                   @Html.TextBox("txt1", "", new { @class = "form-control", @readonly = "true" })
+                               </div>
+                           </div>
+                       </div>
+                       <hr />
+                       <div class="form-group">
+                           ส่วนไม่ Vat
+                           <div class="row">
+                               <div class="col-sm-2">
+                                   รวมเงิน
+                               </div>
+                               <div class="col-sm-4">
+                                   @Html.TextBox("txt1", "", new { @class = "form-control", @readonly = "true" })
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+        </div>
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">รายการรับเข้า</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body" style="">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    รหัสวัตถุดิบ
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("txt1", new List<SelectListItem> { }, new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    รายการวัตถุดิบ
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control"})
+                                </div>
+                                <div class="col-sm-1">
+                                    เลขที่อ้างอิง
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    กว้าง
+                                </div>
+                                <div class="col-sm-2">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    ยาว
+                                </div>
+                                <div class="col-sm-2">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    รับ/เบิก
+                                </div>
+                                <div class="col-sm-2">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    ที่เก็บ
+                                </div>
+                                <div class="col-sm-2">
+                                    @Html.DropDownList("txt1", new List<SelectListItem> { }, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <h5>รายการตามบิล</h5>
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    จำนวน
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    หน่วย
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    จำนวนเงิน
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h5>รายการล็อตรับเข้า</h5>
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    จำนวน
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    หน่วย
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    ราคา:หน่วย
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h5>รายการสต็อก</h5>
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    จำนวน
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    หน่วย
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    ราคา:หน่วย
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h5>ราคาไม่ Vat</h5>
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    ราคารับ: หน่วย
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    ราคาเบิก : หน่วย
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-sm-1">
+                                    จำนวนเงิน
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.TextBox("txt1", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    <a class="btn btn-default"> ยกเลิก</a>
+                                    <a class="btn btn-primary"> เพิ่มรายการ</a>
+                                </div>
+                            </div>
+                        </div>
+                      <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="dataTable table-responsive">
+                                        <table class="table table-bordered" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="7" class="text-center">รายการ</th>
+                                                    <th colspan="3" class="text-center">รายการตามบิล</th>
+                                                    <th colspan="3" class="text-center">รายการสต็อกรับเข้า(ราคาก่อน Vat)</th>
+                                                    <th colspan="3" class="text-center">รายการสต็อก</th>
+                                                    <th colspan="3" class="text-center">ราคาไม่ Vat</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>รหัสวัตถุดิบ</th>
+                                                    <th>รายการวัตถุดิบ</th>
+                                                    <th>เลขที่อ้างอิง</th>
+                                                    <th>กว้าง</th>
+                                                    <th>ยาว</th>
+                                                    <th>รับ/เบิก</th>
+                                                    <th>ที่เก็บ</th>
+                                                    <th>จำนวน</th>
+                                                    <th>หน่วย</th>
+                                                    <th>จำนวนเงิน</th>
+                                                    <th>จำนวน</th>
+                                                    <th>หน่วย</th>
+                                                    <th>ราคา:หน่วย</th>
+                                                    <th>จำนวน</th>
+                                                    <th>หน่วย</th>
+                                                    <th>ราคา:หน่วย</th>
+                                                    <th>ราคารับ:หน่วย</th>
+                                                    <th>ราคาเบิก:หน่วย</th>
+                                                    <th>จำนวนเงิน</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>@Html.DropDownList("txt1",new List<SelectListItem> { new SelectListItem { Text="รหัสวัถุดิบ"} },new { @class="form-control", @style="width:100%"})</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                    <th>@Html.TextBox("txt1", "", new { @class = "form-control" })</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

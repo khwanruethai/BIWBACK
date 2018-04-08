@@ -1,0 +1,436 @@
+﻿@{
+    Layout = "_Layout";
+}
+<section class="content-header">
+    <h1>
+        ใบสั่งผลิต
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ใบสั่งผลิต</a> > </li>
+    </ol>
+</section>
+<section class="content">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">ค้นหาใบเสนอราคา</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                       <div class="col-md-6">
+                           <div class="form-group">
+                               <div class="row">
+                                   <div class="col-md-2">
+                                       เลขที่ใบเสนอราคา
+                                   </div>
+                                   <div class="col-md-4">
+                                       <input class="form-control" id="txt" name="txt" type="text" value="">
+                                   </div>
+                                   <div class="col-md-2">
+                                       รหัสลูกค้า
+                                   </div>
+                                   <div class="col-md-4">
+                                       <input class="form-control" id="txt" name="txt" type="text" value="">
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="form-group">
+                               <div class="row">
+                                   <div class="col-md-2">
+                                       รหัสสินค้า
+                                   </div>
+                                   <div class="col-md-4">
+                                       <input class="form-control" id="txt" name="txt" type="text" value="">
+                                   </div>
+                                   <div class="col-md-6">
+                                       <a class="btn btn-primary"><i class="fa fa-search"></i> ค้นหา</a>
+                                       <a class="btn btn-warning"><i class="fa fa-eraser"></i> เคลียร์</a>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์ใบผลิตสินค้า</a>
+                                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์ใบเบิกวัตถุดิบ</a>
+                                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์สติ๊กเกอร์</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+           
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">ใบเสนอราคา</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_1" data-toggle="tab">เลือกทั้งใบเสนอราคา</a></li>
+                                    <li><a href="#tab_2" data-toggle="tab">เลือกทีละรายการสินค้า</a></li>
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>วันที่</th>
+                                                        <th>เลขที่ใบเสนอราคา</th>
+                                                        <th>เลขที่อ้างอิง</th>
+                                                        <th>ชื่อลูกค้า</th>
+                                                        <th>ชื่อผู้ติดต่อ</th>
+                                                        <th>หมายเหตู</th>
+                                                        <th>VAT(%)</th>
+                                                        <th>มูลค่าก่อน VAT</th>
+                                                        <th>สุทธิ</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                    <div class="tab-pane" id="tab_2">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>เลขที่ใบเสนอราคา</th>
+                                                        <th>ลูกค้า</th>
+                                                        <th>ลำดับ</th>
+                                                        <th>รหัสสินค้า</th>
+                                                        <th>ชื่อสินค้า</th>
+                                                        <th>กว้าง</th>
+                                                        <th>ยาว</th>
+                                                        <th>จำนวน(R)</th>
+                                                        <th>จำนวน(L)</th>
+                                                        <th>รวมจำนวน</th>
+                                                        <th>จำนวนผลิต</th>
+                                                        <th>ค้างผลิต</th>
+                                                        <th>หน่วย</th>
+                                                        <th>ราคา:หน่วย</th>
+                                                        <th>มูลค่า</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td>
+                                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                        </td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                        <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                        <td>Call of Duty IV</td>
+                                                        <td><span class="label label-success">Shipped</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                    <!-- /.tab-pane -->
+                                </div>
+                                <!-- /.tab-content -->
+                            </div>
+
+                        </div>
+                        <!-- /.box-header -->
+                       
+                        <!-- /.box-body -->
+                       
+                        <!-- /.box-footer -->
+                    </div>
+       </div>
+        <div class="col-md-12">
+            
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-print"></i> รายการผลิต</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">รายการสินค้า</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">รายการเบิกวัตถุดิบ</a></li>
+                           
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>ลำดับ</th>
+                                                <th>รหัสสินค้า</th>
+                                                <th>ชื่อสินค้า</th>
+                                                <th>ห้อง</th>
+                                                <th>สี</th>
+                                                <th>กว้าง</th>
+                                                <th>ยาว</th>
+                                                <th>ขวา</th>
+                                                <th>ซ้าย</th>
+                                                <th>จำนวน</th>
+                                                <th>หน่วย</th>
+                                                <th>หมายเหตุ</th>
+                                                <th>วันที่ผลิต</th>
+                                                <th>ลงชื่อ QA</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_2">
+                                The European languages are members of the same family. Their separate existence is a myth.
+                                For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+                                in their grammar, their pronunciation and their most common words. Everyone realizes why a
+                                new common language would be desirable: one could refuse to pay expensive translators. To
+                                achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+                                words. If several languages coalesce, the grammar of the resulting language is more simple
+                                and regular than that of the individual languages.
+                            </div>
+                            <!-- /.tab-pane -->
+                         
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>
+</section>

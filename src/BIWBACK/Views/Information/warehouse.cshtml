@@ -1,0 +1,215 @@
+﻿@{
+    Layout = "_Layout";
+}
+@using BIWBACK.Models
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        ข้อมูลคลังสินค้า/วัตถุดิบ
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a></li>
+        <li class="active"> ข้อมูลคลังสินค้า/วัตถุดิบ</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"> คลังสินค้า/วัตถุดิบ </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="text-right">
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#Mymodal"><i class="fa fa-plus-square-o"></i> เพิ่ม คลังสินค้า/วัตถุดิบ</a>
+                        <br /><br />
+                        <!--Modal-->
+                        <div class="modal fade" id="Mymodal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title">เพิ่ม คลังสินค้า/วัตถุดิบ</h4>
+                                    </div>
+                                    @{ Html.BeginForm("insert_store","Information",FormMethod.Post);}
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    รหัสคลังสินค้า
+                                                </div>
+                                                <div class="col-sm-9">
+                                                  @Html.TextBox("st_code", ViewData["st_code"], new { @class="form-control", @readonly = "readonly" })
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    ชื่อคลังสินค้า
+                                                </div>
+                                                <div class="col-sm-9">
+                                                  @Html.TextBox("st_name",ViewData["st_name"], new { @class="form-control"})
+                                                    
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                       
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                                       <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึก</button>
+                                    </div>
+                                </div>
+                                    @{ Html.EndForm();}
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    <table id="example2" class="table table-bordered table-hover data_table">
+                        <thead>
+                            <tr class="text-center">
+                                <th class="text-center">ลำดับ</th>
+                                <th class="text-center">รหัสคลังสินค้า</th>
+                                <th class="text-center">ชื่อคลังสินค้า</th>
+                              <th class="text-center"><span><i class="fa fa-gears"></i></span> จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 1;}
+                            @foreach (var item in ViewData["store"] as List<StoreModel>)
+                            {
+                            <tr>
+                               <td>@i</td>
+                                <td>@item.store_code</td>
+                                <td>@item.store_name</td>
+                                <td>
+                                    <a class="btn btn-warning edit_st" ref="@item.store_id" data-toggle="modal" data-target="#MymodalEditStore"><i class="fa fa-edit"></i> แก้ไข</a>
+                                    <a class="btn btn-danger del_st" ref="@item.store_id"><i class="fa fa-trash"></i> ลบ</a>
+                                </td>
+                            </tr>
+                                i++;
+                            }
+                          </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+   <!--Modal-->
+<div class="modal fade" id="MymodalEditStore">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">แก้ไขคลังสินค้า</h4>
+            </div>
+            @{ Html.BeginForm("update_store", "Information", FormMethod.Post);}
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            รหัสคลังสินค้า
+                        </div>
+                        <div class="col-sm-9">
+                            @Html.TextBox("st_code_edit","", new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            ชื่อคลังสินค้า
+                        </div>
+                        <div class="col-sm-9">
+                            @Html.TextBox("st_name_edit", "", new { @class = "form-control" })
+
+                        </div>
+
+                    </div>
+                </div>
+                @Html.TextBox("st_id","",new { @class="form-control", @type="hidden"})
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึก</button>
+                </div>
+            </div>
+            @{ Html.EndForm();}
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+<!-- /.modal -->
+
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).on('click', '.edit_st', function () {
+
+        var x = $(this).attr('ref');
+
+        $('#st_id').val(x);
+
+        $.get('../../Information/select_store?id=' + x, function (data) {
+
+            var res = data.split('^');
+
+            $('#st_code_edit').val(res[0]);
+            $('#st_name_edit').val(res[1]);
+
+
+        })
+
+
+    })
+</script>
+<script>
+    $(document).on('click', '.del_st', function () {
+
+        var x = $(this).attr('ref');
+
+        swal({
+            title: "คุณต้องการลบข้อมูลนี้ใช่หรือไม่?",
+            // text: "คุณจะไม่่สามารถ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+
+                $.get('../../Information/del_store?id=' + x, function () {
+
+                    swal("ลบข้อมูลเรียบร้อย!", "", "success");
+                    location.reload();
+                })
+
+            } else {
+                swal("ยกเลิก", "", "error");
+            }
+        });
+
+    });
+</script>  

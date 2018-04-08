@@ -1,0 +1,98 @@
+﻿@{
+    Layout = "_Layout";
+}
+<!-- Content Header (Page header) -->
+@using BIWBACK.Models
+<section class="content-header">
+    <h1>
+        จังหวัด
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a></li>
+        <li class="active">     จังหวัด</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">     จังหวัด</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="text-right">
+                    <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์</a>
+                    <br /><br />
+                </div>
+                <div class="box-body">
+
+                    <!--Modal-->
+                    <div class="modal fade" id="Mymodal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">เพิ่ม  จังหวัด</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                จังหวัด
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" id="date" />
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                                        <a class="btn btn-primary">บันทึก</a>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    </div>
+                    <!-- /.modal -->
+
+
+                    <table class="table table-bordered data_table">
+                        <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>จังหวัด</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 1;}
+                            @foreach (var item in ViewData["province"] as List<provinceModel>)
+                            {
+                            <tr>
+
+                                <td>@i</td>
+                                <td>@item.province_name</td>
+
+                            </tr>
+                                i++;
+                            }
+                            </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

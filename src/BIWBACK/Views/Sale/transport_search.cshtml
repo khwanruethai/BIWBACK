@@ -1,0 +1,304 @@
+﻿@{
+    Layout = "_Layout";
+}
+<section class="content-header">
+    <h1>
+        ใบขนส่งสินค้า > ค้นหาข้อมูล
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">ค้นหาข้อมูล</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                               <div class="row">
+                                   <div class="col-md-4">
+                                       @Html.CheckBox("a1", new { @checked = true }) เลือกแสดงตามวันที่
+                                   </div>
+                               </div>
+                           </div>
+                            <div class="form-group">
+                               <div class="row">
+                                   <div class="col-md-2">
+                                       วันที่ เริ่ม
+                                   </div>
+                                   <div class="col-md-4">
+                                       @Html.TextBox("start", "", new { @class="form-control datepicker"})
+                                   </div>
+                                   <div class="col-md-2">
+                                       ถึง วันที่
+                                   </div>
+                                   <div class="col-md-4">
+                                       @Html.TextBox("end", "", new { @class = "form-control datepicker" })
+                                   </div>
+                               </div>
+                           </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        เลขที่ใบส่งสินค้า
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBox("start", "", new { @class = "form-control datepicker" })
+                                    </div>
+                                    <div class="col-md-2">
+                                       รหัสสินค้า
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBox("end", "", new { @class = "form-control datepicker" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        รหัสลูกค้า
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBox("start", "", new { @class = "form-control datepicker" })
+                                    </div>
+                                    <div class="col-md-2">
+                                        ชื่อลูกค้า
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBox("end", "", new { @class = "form-control datepicker" })
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        เงื่อนไขการค้นหา
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                       @Html.RadioButton("a","a",new { @checked="true"}) Vat  &nbsp;&nbsp;&nbsp;
+                                        @Html.RadioButton("a", "a", new { @checked = "true" }) ไม่ Vat &nbsp;&nbsp;&nbsp;
+                                        @Html.RadioButton("a", "a", new { @checked = "true" }) ทั้งหมด
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <a class="btn btn-primary" asp-area="" asp-action="transport_add" asp-controller="Sale"><i class="fa fa-plus-circle"></i> เพิ่มใบขนส่งสินค้า</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <a class="btn btn-info"><i class="fa fa-search"></i> ค้นหา</a>
+                                        <a class="btn btn-warning"><i class="fa fa-recycle"></i> เรียกคืนการยกเลิก</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์สรุป(เรียงตามวันที่)</a>
+                                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์สรุป(เรียงตามลูกค้า)</a>
+                                        <a class="btn btn-primary"><i class="fa fa-calculator"></i> ประมวลผลยอดวางบิล</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายการส่งสินค้าทั้งหมด</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">รายการ</a></li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>สถานะ</th>
+                                                <th>เลขที่วันที่</th>
+                                                <th>เลขท่ีใบส่งของ</th>
+                                                <th>เลขที่ใบเสนอราคา</th>
+                                                <th>ชื่อลูกค้า</th>
+                                                <th>หมายเหตุ</th>
+                                                <th>มูลค่าสินค้า</th>
+                                                <th>สิทธิ</th>
+                                                <th>วางบิล</th>
+                                                <th>เครื่องมือ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-search"></span> ดูรายละเอียด</a>
+                                                    <a class="btn btn-warning"><span class="fa fa-edit"></span> แก้ไข</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-search"></span> ดูรายละเอียด</a>
+                                                    <a class="btn btn-warning"><span class="fa fa-edit"></span> แก้ไข</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-search"></span> ดูรายละเอียด</a>
+                                                    <a class="btn btn-warning"><span class="fa fa-edit"></span> แก้ไข</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-search"></span> ดูรายละเอียด</a>
+                                                    <a class="btn btn-warning"><span class="fa fa-edit"></span> แก้ไข</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-search"></span> ดูรายละเอียด</a>
+                                                    <a class="btn btn-warning"><span class="fa fa-edit"></span> แก้ไข</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-search"></span> ดูรายละเอียด</a>
+                                                    <a class="btn btn-warning"><span class="fa fa-edit"></span> แก้ไข</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                            
+                            <!-- /.tab-pane -->
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+
+                </div>
+                <!-- /.box-header -->
+                <!-- /.box-body -->
+                <!-- /.box-footer -->
+            </div>
+        </div>
+        <div class="col-md-12">
+
+        </div>
+    </div>
+</section>

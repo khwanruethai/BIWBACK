@@ -1,0 +1,205 @@
+﻿@{
+    Layout = "_Layout";
+}
+<!-- Content Header (Page header) -->
+@using BIWBACK.Models
+<section class="content-header">
+    <h1>
+        คำนำหน้า/คำลงท้าย
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a></li>
+        <li class="active">    คำนำหน้า/คำลงท้าย</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">    คำนำหน้า/คำลงท้าย </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="text-right">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#Mymodal"><i class="fa fa-plus-square-o"></i> เพิ่ม    คำนำหน้า/คำลงท้าย</a>
+                    <br /><br />
+                </div>
+                <div class="box-body">
+
+                    <!--Modal-->
+                    <div class="modal fade" id="Mymodal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">เพิ่ม    คำนำหน้า/คำลงท้าย</h4>
+                                </div>
+                                <div class="modal-body">
+                                    @{ Html.BeginForm("insert_prefix", "Prefix", FormMethod.Post);}
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                คำนำหน้า
+                                            </div>
+                                            <div class="col-sm-4">
+                                                @Html.TextBox("prefix_name", "", new { @class = "from-control" })
+                                              </div>
+                                            <div class="col-sm-2">
+                                                คำลงท้าย
+                                            </div>
+                                            <div class="col-sm-4">
+                                                @Html.TextBox("prefix_ending", "", new { @class = "from-control" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                                        <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึก</button>
+                                    </div>
+                                    @{ Html.EndForm();}
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    </div>
+                    <!-- /.modal -->
+
+
+                    <table id="example2" class="table table-bordered data_table">
+                        <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>คำนำหน้า</th>
+                                <th>คำลงท้าย</th>
+                                <th><span><i class="fa fa-gears"></i></span> จัดการ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 1;}
+                            @foreach (var item in ViewData["prefix"] as List<prefixModel>)
+                            {
+                            <tr>
+
+                                <td>@i</td>
+                                <td>@item.prefix_name</td>
+                                <td>@item.prefix_ending</td>
+                                <td>
+                                    <a class="btn btn-warning edit_px" ref="@item.prefix_id" data-toggle="modal" data-target="#MymodalEditPrefix"><i class="fa fa-edit"></i> แก้ไข</a>
+                                    <a class="btn btn-danger del_px" ref="@item.prefix_id"><i class="fa fa-trash"></i> ลบ</a>
+                                </td>
+                            </tr>
+                            i++;
+                            }
+                           </tbody>
+
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            <!--Modal edit-->
+            <div class="modal fade" id="MymodalEditPrefix">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">เพิ่ม    คำนำหน้า/คำลงท้าย</h4>
+                        </div>
+                        <div class="modal-body">
+                            @{ Html.BeginForm("update_prefix", "Prefix", FormMethod.Post);}
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        คำนำหน้า
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.TextBox("prefix_name_edit", "", new { @class = "from-control" })
+                                    </div>
+                                    <div class="col-sm-2">
+                                        คำลงท้าย
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.TextBox("prefix_ending_edit", "", new { @class = "from-control" })
+                                        @Html.TextBox("prefix_id","",new { @class="form-control" , @type="hidden"})
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                                <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึก</button>
+                            </div>
+                            @{ Html.EndForm();}
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
+            <!-- /.modal -->
+        </div>
+        <!-- /.col -->
+    </div>
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).on('click', '.edit_px', function () {
+
+        var x = $(this).attr('ref');
+        $('#prefix_id').val(x);
+
+        $.get('../../Prefix/select_prefix?id=' + x, function (data) {
+            var res = data.split('^');
+
+            $('#prefix_name_edit').val(res[0]);
+            $('#prefix_ending_edit').val(res[1]);
+
+        })
+
+        
+    })
+</script>
+<script>
+    $(document).on('click', '.del_px', function () {
+
+        var x = $(this).attr('ref');
+
+        swal({
+            title: "คุณต้องการลบข้อมูลนี้ใช่หรือไม่?",
+            // text: "คุณจะไม่่สามารถ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+
+                $.get('../../Prefix/del_prefix?id=' + x, function () {
+
+                    swal("ลบข้อมูลเรียบร้อย!", "", "success");
+                    location.reload();
+                })
+
+            } else {
+                swal("ยกเลิก", "", "error");
+            }
+        });
+
+    });
+</script>  

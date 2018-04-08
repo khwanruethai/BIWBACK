@@ -1,0 +1,829 @@
+﻿@{
+    Layout = "_Layout";
+}
+<section class="content-header">
+    <h1>
+        รายงานระบบขาย : สรุปยอดขายประจำเดือน
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> รายงานระบบขาย</a> > </li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Custom Tabs (Pulled to the right) -->
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs pull-right">
+                    <li class=""><a href="#tab_4-2" data-toggle="tab">แยกตามลูกค้า</a></li>
+                    <li><a href="#tab_4-1" data-toggle="tab">แยกตามสายการขาย</a></li>
+                    <li class=""><a href="#tab_1-1" data-toggle="tab">แยกตามพนักงานขาย</a></li>
+                    <li><a href="#tab_2-2" data-toggle="tab">แยกตามประเภทสินค้า</a></li>
+                    <li class="active"><a href="#tab_3-2" data-toggle="tab">แยกตามสินค้า</a></li>
+                    <li class="pull-left header"><i class="fa fa-th"></i> ออกรายงานตามเงื่อนไข >></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="tab_4-2">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>รายงานสรุปยอดขายรายเดือน แยกตามลูกค้า</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์รายงานสรุป</a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    กำหนดวันที่จาก
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" /> ใบเสนอราคา
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" /> ใบสั่งผลิต
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" checked /> ใบส่งสินค้า
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ปี
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ประเภทสินค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    สินค้่า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    สายการขาย
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    พนักงานขาย
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ประเภทลูกค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    ลูกค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>เงื่อนไขการแสดงข้อมูล</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> แสดงยอดค่าใช่จ่ายเพิ่มเติม
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" /> VAT
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" /> ไม่ VAT
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" checked /> ทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกประเภทสินค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกสินค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกสายการขายทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกพนักงงานขายทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกประเภทลูกค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกลูกค้าทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_4-1">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>รายงานสรุปยอดขายรายเดือน แยกตามสายการขาย</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์รายงานสรุป</a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    กำหนดวันที่จาก
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" /> ใบเสนอราคา
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" /> ใบสั่งผลิต
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" checked /> ใบส่งสินค้า
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ปี
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ประเภทสินค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    สินค้่า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    สายการขาย
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    พนักงานขาย
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ประเภทลูกค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    ลูกค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>เงื่อนไขการแสดงข้อมูล</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> แสดงยอดค่าใช่จ่ายเพิ่มเติม
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" /> VAT
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" /> ไม่ VAT
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" checked /> ทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกประเภทสินค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกสินค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกสายการขายทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกพนักงงานขายทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกประเภทลูกค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกลูกค้าทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_1-1">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>รายงานสรุปยอดขายรายเดือน แยกตามพนักงานขาย</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์รายงานสรุป</a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    กำหนดวันที่จาก
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" /> ใบเสนอราคา
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" /> ใบสั่งผลิต
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" checked /> ใบส่งสินค้า
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ปี
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ประเภทสินค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    สินค้่า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    สายการขาย
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    พนักงานขาย
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ประเภทลูกค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    ลูกค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>เงื่อนไขการแสดงข้อมูล</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> แสดงยอดค่าใช่จ่ายเพิ่มเติม
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" /> VAT
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" /> ไม่ VAT
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" checked /> ทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกประเภทสินค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกสินค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกสายการขายทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกพนักงงานขายทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกประเภทลูกค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกลูกค้าทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_2-2">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>รายงานสรุปยอดขายรายเดือน แยกตามประเภทสินค้า</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์รายงานสรุป</a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    กำหนดวันที่จาก
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" /> ใบเสนอราคา
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" /> ใบสั่งผลิต
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" checked /> ใบส่งสินค้า
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ปี
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ประเภทสินค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    สินค้่า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    สายการขาย
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    พนักงานขาย
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ประเภทลูกค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    ลูกค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>เงื่อนไขการแสดงข้อมูล</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> แสดงยอดค่าใช่จ่ายเพิ่มเติม
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" /> VAT
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" /> ไม่ VAT
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" checked /> ทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกประเภทสินค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกสินค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกสายการขายทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกพนักงงานขายทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกประเภทลูกค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกลูกค้าทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane active" id="tab_3-2">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>รายงานสรุปยอดขายรายเดือน แยกตามสินค้า</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์รายงานสรุป</a>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                   กำหนดวันที่จาก 
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b"  /> ใบเสนอราคา
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b"  /> ใบสั่งผลิต
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="b" checked /> ใบส่งสินค้า
+                                                                
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ปี
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    ประเภทสินค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                  สินค้่า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    สายการขาย
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                   พนักงานขาย
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                   ประเภทลูกค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-2">
+                                    ลูกค้า
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBox("txt", "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>เงื่อนไขการแสดงข้อมูล</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> แสดงยอดค่าใช่จ่ายเพิ่มเติม
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" /> VAT
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" /> ไม่ VAT
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="Radio1" type="radio" name="a" checked /> ทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    เลือกเงื่อนไข
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกประเภทสินค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกสินค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกสายการขายทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกพนักงงานขายทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกประเภทลูกค้าทั้งหมด
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="Radio1" type="checkbox" name="a" checked /> เลือกลูกค้าทั้งหมด
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,234 @@
+﻿@{
+    Layout = "_Layout";
+}
+<section class="content-header">
+    <h1>
+        ข้อมูลตัวแทนจำหน่ายวัตถุดิบ
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a></li>
+        <li class="active">ตัวแทนจำหน่ายวัตถุดิบ</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">ตัวแทนจำหน่ายวัตถุดิบ </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                ชื่อ -  นามสกุล
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                รหัส :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_code"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                ชื่อ :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_prefix"] @ViewData["sup_name"] @ViewData["sup_prefix_end"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                ชื่อผู้ติดต่อ :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_name_contact"]
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                ข้อมูลที่อยู่
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                เลขที่ :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_num"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                ถนน :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_road"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                ตำบล/แขวง :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_district"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                เขต/อำเภอ :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_amphur"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                จังหวัด :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_province"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                ไปรษณีย์ :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_postcode"]
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                ข้อมูลการติดต่อ
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                เบอร์โทร :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_tel"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                เบอร์โทรสาร :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_fax"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                E-mail :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_email"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                www :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_web"]
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                ข้อมูลเครดิต
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                เครติด :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_credit"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                วงเงินเครดิต :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_credit_money"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                เลขที่การค้า :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_trade"]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                เลขที่ผู้เสียภาษี :
+                            </div>
+                            <div class="col-md-10">
+                                @ViewData["sup_tax"]
+                            </div>
+                        </div>
+                    </div>
+</div>
+</div>
+</div>
+</div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+         <a href="@Url.Action("agent","Suplier")" class="btn btn-primary"><span><i class="fa fa-backward"></i></span> ย้อนกลับ</a>
+        </div>
+    </div>
+    </section>

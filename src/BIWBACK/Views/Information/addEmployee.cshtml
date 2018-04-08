@@ -1,0 +1,290 @@
+﻿@{
+    Layout = "_Layout";
+}
+<link href="~/lib/dist/css/skins/_all-skins.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/lib/plugins/iCheck/all.css">
+<section class="content-header">
+    <h1>
+        เพิ่มพนักงาน
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a> > </li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> พนักงาน</a> ></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> เพิ่มพนักงาน</a> ></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">เพิ่มพนักงาน</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+                    @{ Html.BeginForm("insert_emp","Employee",FormMethod.Post, new { @enctype = "multipart/form-data" });}
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                รูปภาพพนักงาน
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                <img id="img_emp" src="~/images/nopicture.jpg"  height="150px" width="150px" /><br />
+                                <br />
+                                <input id="selectFile" name="selectFile" class="btn btn-primary form-control selectFile " type="file" value="อัพโหลดรูปภาพ" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                รหัสพนักงาน
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_code", "", new { @class = "form-control" })
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                ชื่อ-นามสกุล
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.DropDownList("emp_prefix", ViewData["prefix"] as List<SelectListItem>, new { @class = "form-control select2"})
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.TextBox("emp_name", "", new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.TextBox("emp_lastname", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                ตำแหน่ง
+                            </div>
+                            <div class="col-sm-4">
+                            @Html.DropDownList("emp_position",ViewData["position_list"] as List<SelectListItem>,new { @class="form-control select2"})
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                ที่อยู่
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_address", "", new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                ถนน
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_road", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                จังหวัด
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="province">
+                                    @Html.DropDownList("emp_province", ViewData["province"] as List<SelectListItem>, new { @class = "form-control select2", @onChange="optionProvince();" })
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-2 text-right">
+                                อำเภอ/เขต
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="amphur">
+                                    @Html.DropDownList("emp_amphur", ViewData["amphur"] as List<SelectListItem>, new { @class = "form-control select2", @onChange = "optionAmphur();" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                ตำบล/แขวง
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="district">
+                                    @Html.DropDownList("emp_district", ViewData["district"] as List<SelectListItem>, new { @class = "form-control select2" })
+                                </div>
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                รหัสไปรษณีย์
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_postcode", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                เบอร์โทรศัพท์
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_tel", "", new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 text-right">
+                               เบอร์โทรสาร
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_fax", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                E-mail
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_email", "", new { @class = "form-control" })
+                            </div>
+                          
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                เขประจำตัวประชาชน
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_national_id", "", new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 text-right">
+                               เลขที่ผู้เสียภาษี
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_tax", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                เพศ
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("emp_gender", new List<SelectListItem> { new SelectListItem { Text = "ชาย", Value="M" }, new SelectListItem { Text = "หญิง", Value = "F" } }, new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                วันเกิด
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_birth", "", new { @class = "form-control datepicker" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                วันเข้างาน
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_start", "", new { @class = "form-control datepicker" })
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                วันลาออก
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("emp_end", "", new { @class = "form-control datepicker" })
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <!-- /.box-body -->
+
+                    <div class="box-footer text-center">
+                        <button type="button" class="btn btn-default">ยกเลิก</button>
+                       <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i> บันทึก</span></button>
+                    </div>
+                    @{ Html.EndForm();}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script src="~/lib/plugins/iCheck/icheck.min.js"></script>
+<script src="~/lib/bower_components/moment/min/moment.min.js"></script>
+<!-- SlimScroll -->
+<script src="~/lib/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="~/lib/bower_components/fastclick/lib/fastclick.js"></script>
+<script>
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass: 'iradio_flat-green'
+    })
+
+</script>
+<script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+
+                reader.onload = function(e) {
+                    $('#img_emp').attr('src', e.target.result);
+
+                }
+                reader.readAsDataURL(input.files[0]);
+
+            }
+
+        }
+
+        $(".selectFile").change(function() {
+            readURL(this);
+        });
+</script>
+<script>
+
+    function optionProvince() {
+
+        var x = $('#emp_province').val();
+
+        $.get('../../Amphur/option_amphur?id=' + x, function (data) {
+
+            $('.amphur').html('');
+            $('.amphur').html('<select id="emp_amphur" name="emp_amphur" class="form-control"  onChange="optionAmphur();">' + data + '</select>');
+            $('#emp_amphur').select2();
+        })
+
+    }
+    function optionAmphur() {
+
+        var x = $('#emp_amphur').val();
+
+
+        //alert(x);
+        $.get('../../District/option_district?id=' + x, function (data) {
+
+            $('.district').html('');
+            $('.district').html('<select id="emp_district" name="emp_district" class="form-control">' + data + '</select>');
+            $('#emp_district').select2();
+        })
+
+    }
+
+
+</script>

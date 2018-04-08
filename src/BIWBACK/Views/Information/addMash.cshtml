@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "_Layout";
+}
+<section class="content-header">
+    <h1>
+        ส่วนประกอบสินค้า
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a> > </li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> ส่วนประกอบสินค้า</a> ></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> เพิ่มส่วนประกอบสินค้า</a> ></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">ส่วนประกอบสินค้า</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-1 text-right">
+                                รหัสสินค้า :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("txt1", new List<SelectListItem> { new SelectListItem { Text="1"} }, new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-1 text-right">
+                                วัตถุดิบ :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("txt2", new List<SelectListItem> { new SelectListItem { Text = "1" } }, new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-1">
+                                <a class="btn btn-primary addMash"><i class="fa fa-plus-square-o"></i> เพิ่ม</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                               <div class="table-responsive text-center">
+                                  <table class="table dataTable">
+                                      <thead>
+                                          <tr>
+                                              <th>รหัสสินค้า</th>
+                                              <th>วัตถุดิบ</th>
+                                              <th>จัดการ</th>
+
+                                          </tr>
+                                      </thead>
+                                      <tbody class="adddata">
+
+                                      </tbody>
+                                  </table>
+                               </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                   
+                    <!-- /.box-body -->
+
+                    <div class="box-footer text-center">
+                        <button type="submit" class="btn btn-default">ยกเลิก</button>
+                        <button type="submit" class="btn btn-primary">บันทึกข้อมูล</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).on('click', '.addMash', function () {
+
+        $('.adddata').append('<tr><td>'+$('#txt1').text()+'</td><td>'+$('#txt2').text()+'</td><td><a class="btn btn-danger moveMash"><i class="fa fa-trash"></i></a></td></tr>');
+
+    })
+    $(document).on('click', '.moveMash', function () {
+
+        $(this).parent().parent().remove();
+
+    })
+</script>

@@ -1,0 +1,546 @@
+﻿<style>
+    .wizard {
+        margin: 20px auto;
+        background: #fff;
+    }
+
+        .wizard .nav-tabs {
+            position: relative;
+            margin: 40px auto;
+            margin-bottom: 0;
+            border-bottom-color: #e0e0e0;
+        }
+
+        .wizard > div.wizard-inner {
+            position: relative;
+        }
+
+    .connecting-line {
+        height: 2px;
+        background: #e0e0e0;
+        position: absolute;
+        width: 80%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 50%;
+        z-index: 1;
+    }
+
+    .wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+        color: #555555;
+        cursor: default;
+        border: 0;
+        border-bottom-color: transparent;
+    }
+
+    span.round-tab {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        display: inline-block;
+        border-radius: 100px;
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        text-align: center;
+        font-size: 25px;
+    }
+
+        span.round-tab i {
+            color: #555555;
+        }
+
+    .wizard li.active span.round-tab {
+        background: #fff;
+        border: 2px solid #5bc0de;
+    }
+
+        .wizard li.active span.round-tab i {
+            color: #5bc0de;
+        }
+
+    span.round-tab:hover {
+        color: #333;
+        border: 2px solid #333;
+    }
+
+    .wizard .nav-tabs > li {
+        width: 20%;
+    }
+
+    .wizard li:after {
+        content: " ";
+        position: absolute;
+        left: 46%;
+        opacity: 0;
+        margin: 0 auto;
+        bottom: 0px;
+        border: 5px solid transparent;
+        border-bottom-color: #5bc0de;
+        transition: 0.1s ease-in-out;
+    }
+
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        left: 46%;
+        opacity: 1;
+        margin: 0 auto;
+        bottom: 0px;
+        border: 10px solid transparent;
+        border-bottom-color: #5bc0de;
+    }
+
+    .wizard .nav-tabs > li a {
+        width: 70px;
+        height: 70px;
+        margin: 20px auto;
+        border-radius: 100%;
+        padding: 0;
+    }
+
+        .wizard .nav-tabs > li a:hover {
+            background: transparent;
+        }
+
+    .wizard .tab-pane {
+        position: relative;
+        padding-top: 50px;
+    }
+
+    .wizard h3 {
+        margin-top: 0;
+    }
+
+    .container {
+        width: 100% !important;
+    }
+
+    @@media( max-width : 100% ) {
+        .container {
+            width: 100% !important;
+        }
+
+        .wizard {
+            width: 90%;
+            height: auto !important;
+        }
+
+        span.round-tab {
+            font-size: 16px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .wizard .nav-tabs > li a {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .wizard li.active:after {
+            content: " ";
+            position: absolute;
+            left: 35%;
+        }
+    }
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        รายการปรับปรุงวัตถุดิบ
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!---wizard--->
+            <div class="container">
+                <div class="form-group">
+                    <div class="row">
+                        <section>
+                            <div class="wizard">
+                                <div class="wizard-inner">
+
+                                    <div class="connecting-line"></div>
+                                    <ul class="nav nav-tabs" role="tablist">
+
+                                        <li role="presentation" class="active text-center">
+                                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-folder-open"></i>
+                                                </span>
+                                                <br />
+                                            </a>
+                                            <h4>รายละเอียด</h4>
+                                        </li>
+
+                                        <li role="presentation" class="disabled text-center">
+                                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-pencil"></i>
+                                                </span>
+                                            </a>
+                                            <h4>จำนวนยอดปรับปรุง</h4>
+                                        </li>
+                                        <li role="presentation" class="disabled text-center">
+                                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-picture"></i>
+                                                </span>
+                                            </a>
+                                            <h4>มูลค่าไม่ VAT</h4>
+                                        </li>
+                                        <li role="presentation" class="disabled text-center">
+                                            <a href="#step3" data-toggle="tab" aria-controls="step4" role="tab" title="Step 4">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-picture"></i>
+                                                </span>
+                                            </a>
+                                            <h4>มูลค่ารวม VAT</h4>
+                                        </li>
+
+                                        <li role="presentation" class="disabled text-center">
+                                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-ok"></i>
+                                                </span>
+                                            </a>
+                                            <h4>เสร็จสมบูรณ์</h4>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div role="form">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active responsive" role="tabpanel" id="step1" style="margin: 0% 7% 0% 5%;">
+                                          
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        รายการวัตถุดิบ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("aaaa", new List<SelectListItem> { new SelectListItem { Text = "เลือกรายการวัตถุดิบ" } }, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        เลขที่ล็อต
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("aaaa", new List<SelectListItem> { new SelectListItem { Text = "เลือกเลขที่ล็อต" } }, new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ประเภทล็อต
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        หน่วย
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr>
+                                            <div class="form-group text-right">
+
+                                                <button type="button" class="btn btn-primary next-step responsive">ดำเนินการต่อ</button>
+
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane responsive" role="tabpanel" id="step2" style="margin: 0% 7% 0% 5%;">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        กว้าง
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ยาว
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ปริมาณ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ราคา:หน่วย
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        จำนวนเงิน
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        หมายเหตุ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextArea("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button" class="btn btn-default prev-step">ก่อนหน้า</button>
+                                                        <button type="button" class="btn btn-primary next-step responsive">ดำเนินการต่อ</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane responsive" role="tabpanel" id="step3" style="margin: 0% 7% 0% 5%;">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-1">
+                                                        ราคา: หน่วย
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        จำนวนเงิน
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button" class="btn btn-default prev-step">ก่อนหน้า</button>
+                                                        <button type="button" class="btn btn-primary next-step responsive">ดำเนินการต่อ</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane responsive" role="tabpanel" id="step4" style="margin: 0% 7% 0% 5%;">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-1">
+                                                        ราคา: หน่วย
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        จำนวนเงิน
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("aaaa", "", new { @class = "form-control" })
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button" class="btn btn-default prev-step">ก่อนหน้า</button>
+                                                        <button type="button" class="btn btn-primary next-step responsive">ดำเนินการต่อ</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="tab-pane responsive" role="tabpanel" id="complete" style="margin: 0% 7% 0% 5%;">
+                                            <h3>เพิ่มรายการคืนวัตถุดิบเรียบร้อยแล้ว</h3>
+                                            <p>You have successfully completed all steps.</p>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="button" class="btn btn-primary Continue">เพิ่มรายการต่อ</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <hr>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!----/wizard------>
+        </div>
+    </div>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <br />
+                <div class="col-xs-12">
+
+                    <!-- /.info-box -->
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-responsive">
+                                    <thead class="text-center">
+                                        <tr class="text-center">
+                                            <th colspan="6" class="text-center">รายละเอียด</th>
+                                            <th colspan="5" class="text-center">จำนวนยอดคืน</th>
+                                            <th colspan="2" class="text-center">มูลค่าไม่ VAT</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">ลำดับ</th>
+                                            <th class="text-center">สถานะ</th>
+                                            <th class="text-center">รายการเบิก</th>
+                                            <th class="text-center">เลขที่ล็อต</th>
+                                            <th class="text-center">ที่เก็บ</th>
+                                            <th class="text-center">หน่วย</th>
+
+                                            <th class="text-center">กว้าง</th>
+                                            <th class="text-center">ยาว</th>
+                                            <th class="text-center">ปริมาณ</th>
+                                            <th class="text-center">ราคา:หน่วย</th>
+                                            <th class="text-center">จำนวนเงิน</th>
+
+                                            <th class="text-center">ราคา:หน่วย</th>
+                                            <th class="text-center">จำนวนเงิน</th>
+
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td class="text-right">150</td>
+                                            <td class="text-center">เมตร</td>
+                                            <td class="text-right">1,500.00</td>
+
+                                            <td class="text-right">200</td>
+                                            <td class="text-center">เมตร</td>
+                                            <td class="text-right">7.50</td>
+
+                                            <td class="text-right">1,000</td>
+                                            <td class="text-center">เมตร</td>
+                                            <td class="text-right">7.50</td>
+
+                                            <td class="text-right">7.50</td>
+                                            <td class="text-right">7.50</td>
+                                            <td class="text-right">1,500.00</td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    function stepWizard() {
+
+        //Initialize tooltips
+        $('.nav-tabs > li a[title]').tooltip();
+
+        //Wizard
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+            var $target = $(e.target);
+
+            if ($target.parent().hasClass('disabled')) {
+                return false;
+            }
+        });
+
+        $(".next-step").click(function (e) {
+
+            var $active = $('.wizard .nav-tabs li.active');
+            $active.next().removeClass('disabled');
+            nextTab($active);
+
+        });
+        $(".prev-step").click(function (e) {
+
+            var $active = $('.wizard .nav-tabs li.active');
+            prevTab($active);
+
+        });
+
+
+        function nextTab(elem) {
+            $(elem).next().find('a[data-toggle="tab"]').click();
+        }
+        function prevTab(elem) {
+            $(elem).prev().find('a[data-toggle="tab"]').click();
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        stepWizard();
+    })
+</script>
+<script>
+    $(document).on('click', '.Continue', function () {
+
+        alert('111');
+    })
+</script>

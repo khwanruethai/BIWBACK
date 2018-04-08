@@ -1,0 +1,183 @@
+﻿@{
+    Layout = "_Layout";
+}
+<link href="~/lib/dist/css/skins/_all-skins.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/lib/plugins/iCheck/all.css">
+<section class="content-header">
+    <h1>
+        เพิ่มสินค้า
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a> > </li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> วัตถุดิบ</a> ></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>   เพิ่มสินค้า</a> ></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">วัตถุดิบ</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                รูปภาพสินค้า
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                <img id="img_emp" src="~/product_img/@ViewData["pd_img"]" height="150px" width="150px" /><br />
+                                <br />
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                รหัส
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("pd_code", ViewData["pd_code"], new { @class = "form-control" , @readonly = true})
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                กลุ่มสินค้ารายงาน
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("pd_group", ViewData["gp"] as List<SelectListItem>, new { @class = "form-control", @disabled = "disabled" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                กลุ่มสินค้าขาย
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("pd_group_sale", ViewData["gp_2"] as List<SelectListItem>, new { @class = "form-control", @disabled = "disabled" })
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                ชื่อสินค้า
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("pd_name", ViewData["pd_name"], new { @class = "form-control", @readonly = true })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                หน่วย
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("pd_unit", ViewData["unit"] as List<SelectListItem>, new { @class = "form-control" ,@disabled = "@disabled"})
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                สี
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("pd_color", ViewData["pd_color"], new { @class = "form-control", @row = "10", @readonly = true })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                ความกว้าง
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("pd_width", ViewData["pd_width"], new { @class = "form-control" , @readonly = true })
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                ความยาว
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("pd_long", ViewData["pd_long"], new { @class = "form-control" , @readonly = true })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                รายละเอียด
+                            </div>
+                            <div class="col-sm-10">
+                                @Html.TextArea("pd_detail", ViewData["pd_detail"].ToString(), new { @class = "form-control", @readonly = true })
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                ราคา:ตรม.
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("pd_price", ViewData["pd_price"], new { @class = "form-control" , @readonly = true })
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                ตรม.ขายขั้นต่ำ
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("pd_sale", ViewData["pd_sale"], new { @class = "form-control" , @readonly = true })
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                    @Html.TextBox("pd_img", ViewData["pd_img"], new { @class = "form-control", @type = "hidden" })
+                    @Html.TextBox("pd_id", ViewData["pd_id"], new { @class = "form-control", @type = "hidden" })
+                    <div class="box-footer text-center">
+                    <a class="btn btn-primary" href="@Url.Action("product","Product")"> ย้อนกลับ</a>
+                       
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script src="~/lib/plugins/iCheck/icheck.min.js"></script>
+<script src="~/lib/bower_components/moment/min/moment.min.js"></script>
+<!-- SlimScroll -->
+<script src="~/lib/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="~/lib/bower_components/fastclick/lib/fastclick.js"></script>
+<script>
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass: 'iradio_flat-green'
+    })
+
+</script>
+<script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+
+                reader.onload = function(e) {
+                    $('#img_emp').attr('src', e.target.result);
+
+                }
+                reader.readAsDataURL(input.files[0]);
+
+            }
+
+        }
+
+        $(".selectFile").change(function() {
+            readURL(this);
+        });
+</script>

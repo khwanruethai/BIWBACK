@@ -1,0 +1,135 @@
+﻿@{
+    Layout = "_Layout";
+}
+<!-- Content Header (Page header) -->
+@using BIWBACK.Models
+<section class="content-header">
+    <h1>
+        ลูกค้า
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a></li>
+        <li class="active"> ลูกค้า</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"> ลูกค้า </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="text-right">
+                    <a class="btn btn-primary"  asp-controller="Customer" asp-action="addCustomer"><i class="fa fa-plus-square-o"></i>ลูกค้า</a>
+                    <br /><br />
+                </div>
+                <div class="box-body">
+
+                    <table id="example2" class="table table-bordered data_table">
+                        <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>รหัส</th>
+                                <th>ชื่อ-สกุล</th>
+                                <th>เครดิต</th>
+                                <th>เลขที่ผู้เสียภาษี</th>
+                                <th>สถานะ</th>
+                                <th>เบอร์ติดต่อ</th>
+                                <th>Email</th>
+                                <th>ผู้ติดต่อ</th>
+                                <th>สายการขาย</th>
+                                <th>ชื่อเซลล์</th>
+                                <th><span><i class="fa fa-gears"></i> จัดการ</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 1;}
+                            @foreach (var item in ViewData["customer"] as List<CustomerModel>)
+                            {
+                            <tr>
+
+                                <td>@i</td>
+                                <td>@item.cus_code</td>
+                                <td>@item.cus_ref_prefix_id @item.cus_name @item.cus_lastname</td>
+                                <td>@item.credit</td>
+                                <td>@item.cus_tax</td>
+                                @if (item.status == "C")
+                                {
+                                    <td><span><i class="fa fa-home"></i></span> สำนักงานใหญ่</td>
+
+                                }
+                                else if (item.status == "B")
+                                {
+
+                                    <td><span><i class="fa fa-minus"></i></span> สาขาที่</td>
+
+                                }
+                                else
+                                {
+
+                                    <td><span><i class="fa fa-user"></i></span>บุคคล</td>
+
+                                }
+                               
+                                <td>@item.tel</td>
+                                <td>@item.mail</td>
+                                <td>@item.cus_name_contact</td>
+                                <td>@item.line</td>
+                                <td>@item.sale</td>
+                                <td>
+                                    <a href="@Url.Action("viewCustomer","Customer",new { cus = item.cus_id})" class="btn btn-primary view_cus"><i class="fa fa-edit"></i> รายละเอียด</a>
+                                    <a href="@Url.Action("editcustomer","Customer",new { cus = item.cus_id})" class="btn btn-warning edit_cus"><i class="fa fa-edit"></i> แก้ไข</a>
+                                    <a class="btn btn-danger del_cus" ref="@item.cus_id"><i class="fa fa-trash"></i> ลบ</a>
+                                </td>
+                            </tr>
+                                i++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+
+<script>
+    $(document).on('click', '.del_cus', function () {
+
+        var x = $(this).attr('ref');
+
+        swal({
+            title: "คุณต้องการลบข้อมูลนี้ใช่หรือไม่?",
+            // text: "คุณจะไม่่สามารถ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+
+                $.get('../../Customer/del_cus?id=' + x, function () {
+
+                    swal("ลบข้อมูลเรียบร้อย!", "", "success");
+                    location.reload();
+                })
+
+            } else {
+                swal("ยกเลิก", "", "error");
+            }
+        });
+
+    });
+</script>      

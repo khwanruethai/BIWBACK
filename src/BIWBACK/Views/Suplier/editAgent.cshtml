@@ -1,0 +1,236 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<section class="content-header">
+    <h1>
+        ตัวแทนจำหน่ายวัตถุดิบ
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a> > </li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> ตัวแทนจำหน่ายวัตถุดิบ</a> ></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> เพิ่มตัวแทนจำหน่ายวัตถุดิบ</a> ></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">ตัวแทนจำหน่ายวัตถุดิบ</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                @{ Html.BeginForm("update_suplier", "Suplier", FormMethod.Post);}
+                <div class="box-body">
+                    <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2 text-right">
+                                    รหัส :
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.TextBox("sup_code",ViewData["sup_code"],new { @class="form-control", @readonly = true})
+                                </div>
+                            </div>
+                        </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                ชื่อ :
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.DropDownList("sup_prefix", ViewData["prefix"] as List<SelectListItem>, new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.TextBox("sup_name", ViewData["sup_name"], new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.TextBox("sup_lastname", ViewData["sup_prefix_end"], new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2 text-right">
+                                ชื่อผู้ติดต่อ :
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBox("sup_name_contact", ViewData["sup_name_contact"], new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                ที่อยู่ :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("sup_num", ViewData["sup_num"], new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 control-label text-right">
+                                ถนน :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("sup_road", ViewData["sup_road"], new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                จังหวัด :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("sup_province", ViewData["province"] as List<SelectListItem>, new { @class = "form-control select2", @onchange = "optionProvince();" })
+                            </div>
+
+                            <div class="col-sm-2 control-label text-right">
+                                เขต/อำเภอ :
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="amphur">
+                                    @Html.DropDownList("sup_amphur", ViewData["amphur"] as List<SelectListItem>, new { @class = "form-control select2", @onchange = "optionAmphur();" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                แขวง/ตำบล :
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="district">
+                                    @Html.DropDownList("sup_district", ViewData["distict"] as List<SelectListItem>, new { @class = "form-control select2" })
+                                </div>
+                            </div>
+                            <div class="col-sm-2 control-label text-right">
+                                รหัสไปรษณีย์ :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("sup_postcode", ViewData["sup_postcode"], new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                เบอร์โทรศัพท์ :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("sup_tel", ViewData["sup_tel"], new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 control-label text-right">
+                                เบอรืโทรสาร :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("sup_fax", ViewData["sup_fax"], new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                เลขที่การค้า :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("sup_trade", ViewData["sup_trade"], new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 control-label text-right">
+                                เลขที่ผู้เสียภาษี :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("sup_tax", ViewData["sup_tax"], new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                E-mail :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("sup_email", ViewData["sup_email"], new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 control-label text-right">
+                                www :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("sup_web", ViewData["sup_web"], new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                วงเงินเครดิต :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.TextBox("sup_credit_money", ViewData["sup_credit_money"], new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 control-label text-right">
+                                <span style="color:red">*</span> เครดิต :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("sup_credit", ViewData["credit"] as List<SelectListItem>, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    @Html.TextBox("sup_id",ViewData["sup_id"],new { @class="form-contol", @type="hidden"})
+                    <div class="box-footer text-center">
+                        <button type="button" class="btn btn-default">ยกเลิก</button>
+                        <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึกข้อมูล</button>
+                    </div>
+                    @{ Html.EndForm();}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).on('change', '#sup_prefix', function () {
+
+        var x = $('#sup_prefix').val();
+
+        $.get('../../Prefix/prefix_end?id=' + x, function (data) {
+
+
+            $('#sup_lastname').val(data);
+
+        })
+
+
+    })
+</script>
+<script>
+
+    function optionProvince() {
+
+        var x = $('#sup_province').val();
+
+        $.get('../../Amphur/option_amphur?id=' + x, function (data) {
+
+            $('.amphur').html('');
+            $('.amphur').html('<select id="sup_amphur" name="sup_amphur" class="form-control"  style= "width: 100%;" onChange="optionAmphur();">' + data + '</select>');
+            $('#sup_amphur').select2();
+        })
+
+    }
+    function optionAmphur() {
+
+        var x = $('#sup_amphur').val();
+
+
+        //alert(x);
+        $.get('../../District/option_district?id=' + x, function (data) {
+
+            $('.district').html('');
+            $('.district').html('<select id="sup_district" style= "width: 100%;" name="sup_district" class="form-control">' + data + '</select>');
+            $('#sup_district').select2();
+        })
+
+    }
+</script>

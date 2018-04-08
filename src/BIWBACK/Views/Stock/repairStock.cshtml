@@ -1,0 +1,155 @@
+﻿@{
+    Layout = "_Layout";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        ปรับปรุงวัตถุดิบ
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ระบบสต็อก</a></li>
+        <li class="active">  ปรับปรุงวัตถุดิบ</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">  ปรับปรุงวัตถุดิบ </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="text-right">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#Mymodal"><i class="fa fa-plus-square-o"></i> บันทึก  ปรับปรุงวัตถุดิบ</a>
+                    <br /><br />
+                </div>
+                <div class="box-body">
+
+                    <!--Modal-->
+                    <div class="modal fade" id="Mymodal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">เพิ่ม  ปรับปรุงวัตถุดิบ</h4>
+                                </div>
+                                <div class="modal-body">
+
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                วันที่ปรับปรุง
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="date" />
+                                            </div>
+                                            <div class="col-sm-2">
+                                                เลขที่ใบปรับปรุง
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="date" />
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            
+                                            <div class="col-sm-2">
+                                                หมายเหตุ
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <textarea class="form-control" rows="5" id="txt"></textarea>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                                        <a asp-area="" asp-controller="Stock" asp-action="addRepair" class="btn btn-primary">บันทึก</a>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    </div>
+                    <!-- /.modal -->
+
+
+                    <table id="example2" class="table table-bordered data_table">
+                        <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>วันที่</th>
+                                <th>เลขที่ใบปรับปรุง</th>
+                                <th>หมายเหตุ</th>
+                                <th>สถานะ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                            </tr>
+                            <tr>
+
+
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                            </tr>
+                            <tr>
+
+
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                            </tr>
+                            <tr>
+
+
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                            </tr>
+                            <tr>
+
+
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                                <td>X</td>
+                            </tr>
+
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

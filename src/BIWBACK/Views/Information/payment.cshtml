@@ -1,0 +1,259 @@
+﻿@{
+    Layout = "_Layout";
+}
+<!-- Content Header (Page header) -->
+ @using BIWBACK.Models
+<section class="content-header">
+    <h1>
+    เงื่อนไขการชำระเงิน     
+   </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a></li>
+        <li class="active"> เงิอนไขการชำระเงิน</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"> เงื่อนไขการชำระเงิน </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="text-right">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#Mymodal"><i class="fa fa-plus-square-o"></i> เพิ่ม เงื่อนไขการชำระเงิน</a>
+                    <br /><br />
+                </div>
+                <div class="box-body">
+
+                    <!--Modal-->
+                    <div class="modal fade" id="Mymodal">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">เพิ่ม เงิอนไขการชำระเงิน</h4>
+                                </div>
+                                <div class="modal-body">
+                                    @{ Html.BeginForm("insert_con_pay", "ConditionPay", FormMethod.Post);}
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                เงื่อนไขการชำระเงิน
+                                            </div>
+                                            <div class="col-sm-4">
+                                               @Html.TextBox("con_name", "", new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                ประเภทการชำระ
+                                            </div>
+                                            <div class="col-sm-4">
+                                               @Html.DropDownList("con_pay", ViewData["type_payment"] as List<SelectListItem>, new { @class = "form-control" })
+                                            </div>
+                                          
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                จำนวน
+                                            </div>
+                                            <div class="col-sm-2">
+                                                @Html.TextBox("con_num", "", new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-sm-2">
+                                                @Html.DropDownList("con_type", new List<SelectListItem> { new SelectListItem { Text = "วัน", Value = "D" }, new SelectListItem { Text = "เดือน", Value = "M" } }, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                 
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                                        <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึก</button>
+                                    </div>
+                                    @{ Html.EndForm();}
+                                </div>
+
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    </div>
+                    <!-- /.modal -->
+
+
+                    <table id="example2" class="table table-bordered data_table">
+                        <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>เงื่อนไขการชำระเงิน</th>
+                                <th>ประเภท</th>
+                                <th>จำนวน</th>
+                                <th>หน่วย</th>
+                               <th><span><i class="fa fa-gears"></i></span> จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 1;}
+                            @foreach (var item in ViewData["conditionPay"] as List<conditionPayModel>)
+                            {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.cdt_name</td>
+                                <td>@item.cdt_ref_typ_pay</td>
+                                <td>@item.cdt_num</td>
+                                @if (item.cdt_type == "D")
+                                {
+                                    <td><a class="btn btn-success"> วัน </a></td>
+                                }
+                                else
+                                {
+                                    <td><a class="btn btn-warning">เดือน</a></td>
+                                }
+
+                              
+                                <td>
+                                    <a class="btn btn-warning edit_cp" ref="@item.cdt_id" data-toggle="modal" data-target="#MymodalEditCP"><i class="fa fa-edit"></i> แก้ไข</a>
+                                    <a class="btn btn-danger del_cp" ref="@item.cdt_id"><i class="fa fa-trash"></i> ลบ</a>
+                                </td>
+                            </tr>
+                                i++;
+                            }
+                         </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+            <!--Modal-->
+            <div class="modal fade" id="MymodalEditCP">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">แก้ไข เงิอนไขการชำระเงิน</h4>
+                        </div>
+                        <div class="modal-body">
+                            @{ Html.BeginForm("update_con_pay", "ConditionPay", FormMethod.Post);}
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        เงื่อนไขการชำระเงิน
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.TextBox("con_name_edit", "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        ประเภทการชำระ
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @Html.DropDownList("con_pay_edit", ViewData["type_payment"] as List<SelectListItem>, new { @class = "form-control" })
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        จำนวน
+                                    </div>
+                                    <div class="col-sm-2">
+                                        @Html.TextBox("con_num_edit", "", new { @class = "form-control" })
+                                    </div>
+                                    <div class="col-sm-2">
+                                        @Html.DropDownList("con_type_edit", new List<SelectListItem> { new SelectListItem { Text = "วัน", Value = "D" }, new SelectListItem { Text = "เดือน", Value = "M" } }, new { @class = "form-control" })
+                                        @Html.TextBox("con_id","",new { @class="form-contol" , @type="hidden"})
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                                <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึก</button>
+                            </div>
+                            @{ Html.EndForm();}
+                        </div>
+
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
+            <!-- /.modal -->
+        </div>
+        <!-- /.col -->
+    </div>
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).on('click', '.edit_cp', function () {
+
+        var x = $(this).attr('ref');
+
+        $('#con_id').val(x);
+
+        $.get('../../ConditionPay/select_con_type?id=' + x, function (data) {
+
+            var res = data.split('^');
+
+            $('#con_name_edit').val(res[0]);
+            $('#con_pay_edit').val(res[1]);
+            $('#con_num_edit').val(res[2]);
+            $('#con_type_edit').val(res[3]);
+
+
+        })
+
+
+    })
+</script>
+<script>
+    $(document).on('click', '.del_cp', function () {
+
+        var x = $(this).attr('ref');
+
+        swal({
+            title: "คุณต้องการลบข้อมูลนี้ใช่หรือไม่?",
+            // text: "คุณจะไม่่สามารถ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+
+                $.get('../../ConditionPay/del_con_pay?id=' + x, function () {
+
+                    swal("ลบข้อมูลเรียบร้อย!", "", "success");
+                    location.reload();
+                })
+
+            } else {
+                swal("ยกเลิก", "", "error");
+            }
+        });
+
+    });
+</script>  

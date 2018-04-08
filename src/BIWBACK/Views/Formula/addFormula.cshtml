@@ -1,0 +1,192 @@
+﻿@{
+    Layout = "_Layout";
+}
+<section class="content-header">
+    <h1>
+        สูตรคำนวณวัตถุดิบ
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a> > </li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> สูตรคำนวณวัตถุดิบ</a> ></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> เพิ่มสูตรคำนวณวัตถุดิบ</a> ></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">สูตรคำนวณวัตถุดิบ</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+            
+                <div class="box-body">
+                    @{ Html.BeginForm("insertFormula", "Formula", FormMethod.Post);}
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 text-right">
+                                ประเภทสินค้า :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("group_product", ViewData["group_product"] as List<SelectListItem>, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                กลุ่มวัตถุดิบ :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("group_material", ViewData["group_material"] as List<SelectListItem>, new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 control-label text-right">
+                                หน่วย :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("unit", ViewData["unit"] as List<SelectListItem> , new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                ผลที่ได้คือความกว้าง :
+                            </div>
+                            <div class="col-sm-4">
+                               @Html.CheckBox("result_width","")
+                            </div>
+                            <div class="col-sm-2 control-label text-right">
+                               ผลที่ได้คือความยาว :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.CheckBox("result_long", "")
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="form-group">
+                        <div class="row">
+                          <div class="col-sm-6 col-lg-6">
+                          <div class="form-group">
+                              <div class="row">
+                                  <div class="col-sm-12 text-center">
+                                      ความกว้างสินค้า :
+                                  </div>
+                              </div>
+                          </div>
+                              <div class="form-group">
+                                  <div class="row">
+                                      <div class="col-sm-offset-2 col-sm-2">
+                                          @Html.DropDownList("width_action_a", new List<SelectListItem> {
+                                         new SelectListItem { Text="", Value=""},
+                                         new SelectListItem { Text="+", Value="+"},
+                                         new SelectListItem { Text="-", Value="-"},
+                                         new SelectListItem { Text="x", Value="*"},
+                                         new SelectListItem { Text="/", Value="/"}
+                                     }, new { @class = "form-control" })
+                                      </div>
+                                      <div class="col-sm-3">
+                                          @Html.TextBox("width_action_a_val", "0", new { @class = "form-control text-right", @type="number", @step = "any" })
+                                      </div>
+                                      <div class="col-sm-2">
+                                          @Html.DropDownList("width_action_b", new List<SelectListItem> {
+                                         new SelectListItem { Text="", Value=""},
+                                         new SelectListItem { Text="+", Value="+"},
+                                         new SelectListItem { Text="-", Value="-"},
+                                         new SelectListItem { Text="x", Value="*"},
+                                         new SelectListItem { Text="/", Value="/"}}, new { @class = "form-control" })
+                                      </div>
+                                      <div class="col-sm-3">
+                                          @Html.TextBox("width_action_b_val", "0", new { @class = "form-control text-right", @type = "number", @step = "any" })
+                                      </div>
+                                  </div>
+                              </div>
+                         
+                          </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                            ความยาวสินค้า :
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-offset-2 col-sm-2">
+                                            @Html.DropDownList("long_action_a", new List<SelectListItem> {
+                                         new SelectListItem { Text="", Value=""},
+                                         new SelectListItem { Text="+", Value="+"},
+                                         new SelectListItem { Text="-", Value="-"},
+                                         new SelectListItem { Text="x", Value="*"},
+                                         new SelectListItem { Text="/", Value="/"}
+                                     }, new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-sm-3">
+                                            @Html.TextBox("long_action_a_val", "0", new { @class = "form-control text-right", @type = "number", @step = "any" })
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @Html.DropDownList("long_action_b", new List<SelectListItem> {
+                                         new SelectListItem { Text="", Value=""},
+                                         new SelectListItem { Text="+", Value="+"},
+                                         new SelectListItem { Text="-", Value="-"},
+                                         new SelectListItem { Text="x", Value="*"},
+                                         new SelectListItem { Text="/", Value="/"}}, new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-sm-3">
+                                            @Html.TextBox("long_action_b_val", "0", new { @class = "form-control text-right", @type = "number", @step = "any" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                ผลที่ได้คือจำนวน :
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.CheckBox("result_num", "")
+                            </div>
+                          
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2 control-label text-right">
+                                สินค้ากว้าง*ยาว มากกว่า :
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.TextBox("width_x_long", "0", new { @class = "form-control text-right", @type="number" })
+                            </div>
+                            <div class="col-sm-1">
+                                ใช้
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.TextBox("use_num", "0", new { @class = "form-control text-right", @type="number" }) 
+                            </div>
+                            <div class="col-sm-2">
+                                ต่อสินค้า 1 ชิ้น
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer text-center">
+                        <button type="button" class="btn btn-default">ยกเลิก</button>
+                        <button type="submit" class="btn btn-primary"> <span><i class="fa fa-save"></i></span> บันทึกข้อมูล</button>
+                    </div>
+                    @{ Html.EndForm();}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,270 @@
+﻿@{
+    Layout = "_Layout";
+}
+@using BIWBACK.Models
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        ข้อมูลกลุ่มวัตถุดิบ
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a></li>
+        <li class="active"> ข้อมูลกลุ่มวัตถุดิบ</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"> กลุ่มวัตถุดิบ </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="text-right">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#Mymodal"><i class="fa fa-plus-square-o"></i> เพิ่ม กลุ่มวัตถุดิบ</a>
+                    <br /><br />
+                </div>
+                <div class="box-body">
+
+                    <!--Modal-->
+                    <div class="modal fade" id="Mymodal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">เพิ่มกลุ่มวัตถุดิบ</h4>
+                                </div>
+                                @{ Html.BeginForm("insert_gm","Information",FormMethod.Post);}
+                                <div class="modal-body">
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                รหัส
+                                            </div>
+                                            <div class="col-sm-4">
+                                                @Html.TextBox("gm_code",ViewData["gm_code"],new { @class="form-control", @readonly = true})
+                                            </div>
+                                            <div class="col-sm-2">
+                                                กลุ่มวัตถุดิบ
+                                            </div>
+                                            <div class="col-sm-4">
+                                                @Html.TextBox("gm_name", "", new { @class = "form-control" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                ประเภท
+                                            </div>
+                                            <div class="col-sm-4">
+                                                @Html.DropDownList("gm_type", ViewData["tm"] as List<SelectListItem>, new { @class = "form-control" })
+                                            </div>
+                                            <div class="col-sm-2">
+                                                หน่วย
+                                            </div>
+                                            <div class="col-sm-4">
+                                                @Html.DropDownList("gm_unit", ViewData["unit"] as List<SelectListItem>, new { @class = "form-control" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    @*<div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                ชื่อบัญชี
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <select class="form-control"></select>
+                                            </div>
+
+                                        </div>
+                                    </div>*@
+                                   
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                                       <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึก</button>
+                                    </div>
+                                </div>
+                                @{ Html.EndForm();}
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    </div>
+                    <!-- /.modal -->
+
+
+                    <table id="example2" class="table table-bordered data_table">
+                        <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>รหัส</th>
+                                <th>รายการ</th>
+                                <th>ประเภท</th>
+                                <th>หน่วย</th>
+                                <th><span><i class="fa fa-gears"></i></span> จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 1;}
+                            @foreach (var item in ViewData["gm"] as List<groupMaterialModel>)
+                            {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.gm_code</td>
+                                <td>@item.gm_name</td>
+                                <td>@item.gm_ref_type_material</td>
+                                <td>@item.gm_ref_unit</td>
+                                <td>
+                                    <a class="btn btn-warning edit_gm" ref="@item.gm_id" data-toggle="modal" data-target="#MymodalEditGM"><i class="fa fa-edit"></i> แก้ไข</a>
+                                    <a class="btn btn-danger del_gm" ref="@item.gm_id"><i class="fa fa-trash"></i> ลบ</a>
+
+                                </td>
+                            </tr>
+                                i++;
+                            }
+                          </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+   <!--Modal-->
+<div class="modal fade" id="MymodalEditGM">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">เพิ่มกลุ่มวัตถุดิบ</h4>
+            </div>
+            @{ Html.BeginForm("update_gm","Information",FormMethod.Post);}
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            รหัส
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.TextBox("gm_code_edit", "", new { @class = "form-control", @readonly = true })
+                        </div>
+                        <div class="col-sm-2">
+                            กลุ่มวัตถุดิบ
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.TextBox("gm_name_edit", "", new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            ประเภท
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.DropDownList("gm_type_edit", ViewData["tm"] as List<SelectListItem>, new { @class = "form-control" })
+                        </div>
+                        <div class="col-sm-2">
+                            หน่วย
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.DropDownList("gm_unit_edit", ViewData["unit"] as List<SelectListItem>, new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                </div>
+                @*<div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                ชื่อบัญชี
+                            </div>
+                            <div class="col-sm-10">
+                                <select class="form-control"></select>
+                            </div>
+
+                        </div>
+                    </div>*@
+                @Html.TextBox("gm_id", "", new { @class = "form-control" })
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึก</button>
+                </div>
+            </div>
+            @{ Html.EndForm();}
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+<!-- /.modal -->
+
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).on('click', '.edit_gm', function () {
+
+        var x = $(this).attr('ref');
+
+        $('#gm_id').val(x);
+
+        $.get('../../Information/select_gm?id=' + x, function (data) {
+
+            var res = data.split('^');
+
+            $('#gm_code_edit').val(res[0]);
+            $('#gm_name_edit').val(res[1]);
+            $('#gm_type_edit').val(res[2]);
+            $('#gm_unit_edit').val(res[3]);
+
+        })
+
+
+    })
+</script>
+<script>
+    $(document).on('click', '.del_gm', function () {
+
+        var x = $(this).attr('ref');
+
+        swal({
+            title: "คุณต้องการลบข้อมูลนี้ใช่หรือไม่?",
+            // text: "คุณจะไม่่สามารถ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+
+                $.get('../../Information/del_gm?id=' + x, function () {
+
+                    swal("ลบข้อมูลเรียบร้อย!", "", "success");
+                    location.reload();
+                })
+
+            } else {
+                swal("ยกเลิก", "", "error");
+            }
+        });
+
+    });
+</script>  

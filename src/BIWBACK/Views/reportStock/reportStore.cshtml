@@ -1,0 +1,212 @@
+﻿@{
+    Layout = "_Layout";
+}
+<section class="content-header">
+    <h1>
+        รายงานระบบสต็อก : รายงานคลังสินค้า
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> รายงานระบบสต็อก</a> > </li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <div class="col-sm-4 col-lg-8">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            รายการวัตถุดิบ
+                        </div>
+                        <div class="col-sm-4">
+                            <select id="Select1" class="form-control">
+                                <option></option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            วันที่ เริ่ม
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.TextBox("aa", "", new { @class = "form-control" })
+                        </div>
+                        <div class="col-sm-2">
+                            ถึง วันที่
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.TextBox("aa", "", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <a class="btn btn-primary"><i class="fa fa-list"></i> แสดงรายการ</a>
+                            <a class="btn btn-warning"><i class="fa fa-eraser"></i> เคลียร์รายการ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   <div class="col-sm-8 col-lg-4">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            เงื่อนไข
+                        </div>
+                       
+                    </div>
+                </div>
+               <hr />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input id="Radio1" type="radio" name="q"/> Audit
+                        </div>
+                        <div class="col-sm-6">
+                            <input id="Radio1" type="radio" name="q" /> VAT
+                        </div>
+                        
+                    </div>
+                </div>
+               <div class="form-group">
+                   <div class="row">
+                       <div class="col-sm-6">
+                           <input id="Radio1" type="radio" name="q" /> ไม่ VAT
+                       </div>
+                       <div class="col-sm-6">
+                           <input id="Radio1" type="radio" name="q" checked/> ทั้งหมด
+                       </div>
+
+                   </div>
+               </div>
+            </div>
+           <hr />
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr />
+                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์รายการวัตถุดิบคงเหลือ</a>
+                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์รายละเอียดล็อตวัตถุดิบคงเหลือ</a>
+                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์ลาเบล</a>
+                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์สต็อกการ์ด</a>
+                      
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="col-md-12">
+                <!-- Custom Tabs -->
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab">รายการวัตถุดิบ</a></li>
+                        <li><a href="#tab_2" data-toggle="tab">รายละเอียดล็อต</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                           <table class="table table-bordered">
+                               <thead>
+                                   <tr>
+                                       <th colspan="3">รายละเอียด</th>
+                                       <th>ยอดยกมา</th>
+                                       <th>ยอดรับเข้า</th>
+                                       <th>ยอดเบิก</th>
+                                       <th>ยอดรับคืน</th>
+                                       <th>ยอดปรับปรุง</th>
+                                       <th>ยอดคงเหลือ</th>
+                                   </tr>
+                                   <tr>
+                                       <th>รหัสวัตถุดิบ</th>
+                                       <th>รายการวัตถุดิบ</th>
+                                       <th>หน่วย</th>
+                                       <th>ปริมาณ</th>
+                                       <th>ปริมาณ</th>
+                                       <th>ปริมาณ</th>
+                                       <th>ปริมาณ</th>
+                                       <th>ปริมาณ</th>
+                                       <th>ปริมาณ</th>
+                                   </tr>
+                               </thead>
+                           </table>
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_2">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                      วันที่ตัดสต็อก
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select id="Select1" class="form-control">
+                                            <option></option>
+
+                                        </select>
+                                    </div>
+                                   
+                                    <div class="col-md-6">
+                                        <a class="btn btn-primary"><i class="fa fa-print"></i> วันที่ตัดสต็อก</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        หมายเหตุ
+                                    </div>
+                                    <div class="col-md-4">
+                                        <textarea id="TextArea1" rows="2" cols="20" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="3">รายละเอียด</th>
+                                                    <th>ยอดยกมา</th>
+                                                    <th>ยอดรับเข้า</th>
+                                                    <th>ยอดเบิก</th>
+                                                    <th>ยอดรับคืน</th>
+                                                    <th>ยอดปรับปรุง</th>
+                                                    <th>ยอดคงเหลือ</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>รหัสวัตถุดิบ</th>
+                                                    <th>รายการวัตถุดิบ</th>
+                                                    <th>หน่วย</th>
+                                                    <th>ปริมาณ</th>
+                                                    <th>ปริมาณ</th>
+                                                    <th>ปริมาณ</th>
+                                                    <th>ปริมาณ</th>
+                                                    <th>ปริมาณ</th>
+                                                    <th>ปริมาณ</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.tab-pane -->
+                       
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+                <!-- nav-tabs-custom -->
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.box-body -->
+       
+        <!-- /.box-footer -->
+    </div>
+</section>

@@ -1,0 +1,217 @@
+﻿@{
+    Layout = "_Layout";
+}
+@using BIWBACK.Models
+<section class="content-header">
+    <h1>
+        ส่วนประกอบแบบสินค้า
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a> > </li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> ส่วนประกอบแบบสินค้า</a> ></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> เพิ่มส่วนประกอบแบบสินค้า</a> ></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">ส่วนประกอบแบบสินค้า</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-1 text-right">
+                                รหัสแบบสินค้า :
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.DropDownList("modelProduct", ViewData["modelProduct"] as List<SelectListItem>, new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                วัตถุดิบ :
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.DropDownList("material", ViewData["material"] as List<SelectListItem>, new { @class = "form-control" })
+                            </div>
+                            <div class="col-sm-1">
+                                <a class="btn btn-primary addMash"><i class="fa fa-plus-square-o"></i> เพิ่ม</a>
+                            </div>
+                            <div class="col-sm-1">
+                                <a class="btn btn-info" data-target="#Mymodal" data-toggle="modal"><i class="fa fa-check-square-o"></i> เลือกหลายรายการ</a>
+                            </div>
+                        </div>
+                    </div>
+                    @{ Html.BeginForm("insertModelMash","Mash",FormMethod.Post);}
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="table-responsive text-center">
+                                    <table class="table dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>รหัสแบบสินค้า</th>
+                                                <th>วัตถุดิบ</th>
+                                                <th>จัดการ</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="adddata"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+
+                    <div class="box-footer text-center">
+                        <button type="button" class="btn btn-default">ยกเลิก</button>
+                        <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึกข้อมูลทั้งหมด</button>
+                    </div>
+                    @{ Html.EndForm();}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal-->
+    <div class="modal fade" id="Mymodal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">เลือกสินค้าหลายรายการ</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group text-center">
+                        <div class="row">
+                            <div class="col-sm-3 text-right">
+                                วัตถุดิบ
+                            </div>
+                            <div class="col-sm-6 text-left">
+
+                                @Html.DropDownList("material_modal", ViewData["material"] as List<SelectListItem>, new { @class = "form-control" })
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+
+                                <input class="icheckbox_flat-green" type="checkbox" value="N" onclick="test();" style="margin: 0;margin-left: -20px;width: 20px;height: 20px;" /> เลือกรายการทั้งหมด
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive mailbox-messages">
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>เลือก</th>
+                                                <th>รายการ</th>
+                                                <td></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in ViewData["modelProduct_list"] as List<modelProductModel>)
+                                            {
+                                                <tr>
+                                                    <td><input id="check" name="check" type="checkbox" value="1"></td>
+                                                    <td class="mailbox-name">@item.mp_name</td>
+                                                    <td>@item.mp_id</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left closed" data-dismiss="modal">ยกเลิก</button>
+                            <button type="submit" class="btn btn-primary checkAll"><span><i class="fa fa-save"></i> ตกลง </span></button>
+                        </div>
+
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+        </div>
+        <!-- /.modal -->
+</section>
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).on('click', '.addMash', function () {
+
+        var material_id = $('#material').val();
+        var txt_id = $('#modelProduct').val();
+
+
+        $('.adddata').append('<tr><td>' + $('#modelProduct').text() + '</td><td>' + $('#material').text() + '</td><td><a class="btn btn-danger moveMash"><i class="fa fa-trash"></i></a></td><td><input name="material_id" id="material_id" value="' + material_id + '"/></td><td><input name="modelproduct_id" id="modelproduct_id" value="' + txt_id + '"/></td></tr>');
+
+    })
+    $(document).on('click', '.moveMash', function () {
+
+        $(this).parent().parent().remove();
+
+    })
+</script>
+
+<script>
+    function test() {
+
+        // alert('55');
+        var x = $('.icheckbox_flat-blue').attr('class');
+
+        if (x == 'icheckbox_flat-blue') {
+
+            $('.icheckbox_flat-blue').attr('class', 'icheckbox_flat-blue checked');
+
+        } else {
+
+            $('.icheckbox_flat-blue').attr('class', 'icheckbox_flat-blue');
+
+        }
+
+
+
+    }
+    $(document).on('click', '.checkAll', function () {
+
+        var len = $('.icheckbox_flat-blue.checked').length;
+        var material = $('#material_modal :selected').text();
+        var material_id = $('#material_modal').val();
+
+        for (var i = 0; i < len; i++) {
+
+            var txt = $('.icheckbox_flat-blue.checked').eq(i).parent().parent().find('td').eq(1).text();
+            var txt_id = $('.icheckbox_flat-blue.checked').eq(i).parent().parent().find('td').eq(2).text();
+            //$('.adddata').append('<tr><td>' + material + '</td><td>' +txt+ '</td><td><a class="btn btn-danger moveMash"><i class="fa fa-trash"></i>  นำออก</a></td><td><input name="material_id" id="material_id" value="'+material_id+'"/></td><td><input name="product_id" id="product_id" value="'+txt_id+'"/></td></tr>');
+            $('.adddata').append('<tr><td>' + txt + '</td><td>' + material + '</td><td><a class="btn btn-danger moveMash"><i class="fa fa-trash"></i></a></td><td><input name="material_id" id="material_id" value="' + material_id + '"/></td><td><input name="modelproduct_id" id="modelproduct_id" value="' + txt_id + '"/></td><</tr>');
+        }
+
+        $('.closed').click();
+
+    });
+    $(document).on('change', '#material', function () {
+
+        var x = $('#material :selected').val();
+
+
+        $('#material_modal').val(x);
+
+    })
+</script>

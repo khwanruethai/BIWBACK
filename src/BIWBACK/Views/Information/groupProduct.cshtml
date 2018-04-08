@@ -1,0 +1,283 @@
+﻿@{
+    Layout = "_Layout";
+}
+@using BIWBACK.Models
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        กลุ่มสินค้า
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a></li>
+        <li class="active"> กลุ่มสินค้า</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"> กลุ่มสินค้า </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="text-right">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#Mymodal"><i class="fa fa-plus-square-o"></i> เพิ่ม กลุ่มสินค้า</a>
+                    <br /><br />
+                </div>
+                <div class="box-body">
+
+                    <!--Modal-->
+                    <div class="modal fade" id="Mymodal">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">เพิ่ม กลุ่มสินค้า</h4>
+                                </div>
+                                <div class="modal-body">
+                                 @{ Html.BeginForm("insert_gp","Information",FormMethod.Post);}
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                รหัส
+                                            </div>
+                                            <div class="col-sm-4">
+                                               @Html.TextBox("gp_code","",new { @class="form-control"})
+                                                <span class="check"></span>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                กลุ่มสินค้า
+                                            </div>
+                                            <div class="col-sm-4">
+                                                @Html.TextBox("gp_name", "", new { @class = "form-control" })
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                หน่วย
+                                            </div>
+                                            <div class="col-sm-4">
+                                                @Html.DropDownList("gp_unit", ViewData["unit"]  as List<SelectListItem>,new { @class = "form-control" })
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                ประเภทสูตร
+                                            </div>
+                                            <div class="col-sm-4">
+                                              @Html.TextBox("gp_cal","1",new { @class="form-control"})
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                                        <button type="submit" class="btn btn-primary submit"><span><i class="fa fa-save"></i></span> บันทึก</button>
+                                    </div>
+
+                                    @{ Html.EndForm();}
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    </div>
+                    <!-- /.modal -->
+
+
+                    <table id="example2" class="table table-bordered data_table">
+                        <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>รหัส</th>
+                                <th>รายการ</th>
+                                <th>หน่วย</th>
+                                <th>ประเภทสูตร</th>
+                                <th><span><i class="fa fa-gears"></i></span> จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 1;}
+                            @foreach (var item in ViewData["gp"] as List<groupPoductModel>)
+                            {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.gp_code</td>
+                                <td>@item.gp_name</td>
+                                <td>@item.gp_unit</td>
+                                <td>@item.gp_type_cal</td>
+                                <td>
+                                    <a class="btn btn-warning edit_gp" ref="@item.gp_id" data-toggle="modal" data-target="#MymodalEditGP"><i class="fa fa-edit"></i> แก้ไข</a>
+                                    <a class="btn btn-danger del_gp" ref="@item.gp_id"><i class="fa fa-trash"></i> ลบ</a>
+                                </td>
+                            </tr>
+                                i++;
+                            }
+                           </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    </div>
+    <!-- /.row -->
+</section>
+    <!--Modal-->
+<div class="modal fade" id="MymodalEditGP">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">เพิ่ม กลุ่มสินค้า</h4>
+            </div>
+            <div class="modal-body">
+                @{ Html.BeginForm("update_gp", "Information", FormMethod.Post);}
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            รหัส
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.TextBox("gp_code_edit", "", new { @class = "form-control", @readonly = true })
+                        </div>
+                        <div class="col-sm-2">
+                            กลุ่มสินค้า
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.TextBox("gp_name_edit", "", new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            หน่วย
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.DropDownList("gp_unit_edit", ViewData["unit"] as List<SelectListItem>, new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            ประเภทสูตร
+                        </div>
+                        <div class="col-sm-4">
+                            @Html.TextBox("gp_cal_edit", "1", new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                </div>
+                @Html.TextBox("gp_id", "1", new { @class = "form-control" })
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary"><span><i class="fa fa-save"></i></span> บันทึก</button>
+                </div>
+
+                @{ Html.EndForm();}
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+<!-- /.modal -->
+<!-- /.content -->
+
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).on('click', '.edit_gp', function () {
+
+        var x = $(this).attr('ref');
+
+        $('#gp_id').val(x);
+
+        $.get('../../Information/select_gp?id=' + x, function (data) {
+
+            var res = data.split('^');
+
+            $('#gp_code_edit').val(res[0]);
+            $('#gp_name_edit').val(res[1]);
+            $('#gp_unit_edit').val(res[2]);
+            $('#gp_cal_edit').val(res[3]);
+
+        })
+
+
+    })
+</script>
+<script>
+    $(document).on('click', '.del_gp', function () {
+
+        var x = $(this).attr('ref');
+
+        swal({
+            title: "คุณต้องการลบข้อมูลนี้ใช่หรือไม่?",
+            // text: "คุณจะไม่่สามารถ",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function (isConfirm) {
+            if (isConfirm) {
+
+                $.get('../../Information/del_gp?id=' + x, function () {
+
+                    swal("ลบข้อมูลเรียบร้อย!", "", "success");
+                    location.reload();
+                })
+
+            } else {
+                swal("ยกเลิก", "", "error");
+            }
+        });
+
+    });
+</script>  
+<script>
+    $(document).on('keyup', '#gp_code', function () {
+
+        var x = $('#gp_code').val();
+        $.get('../../Information/gp_code?id=' + x, function (data) {
+
+           // alert(data);
+            if (data == "1") {
+
+                $('.check').html('<i class="fa fa-circle text-red"></i> มีรหัสนี้แล้ว');
+                $('.submit').hide();
+
+            } else {
+
+                $('.check').html('<i class="fa fa-check-circle text-green"></i> ยังไม่มีรหัสนี้');
+                $('.submit').show();
+
+            }
+
+           
+
+        })
+
+    })
+</script>

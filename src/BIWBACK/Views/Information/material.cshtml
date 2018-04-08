@@ -1,0 +1,85 @@
+﻿@{
+    Layout = "_Layout";
+}
+@using BIWBACK.Models
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        ข้อมูลวัตถุดิบ
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> ข้อมูลหลัก</a></li>
+        <li class="active"> ข้อมูลวัตถุดิบ</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"> วัตถุดิบ </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="text-right">
+                    <a class="btn btn-primary" asp-action="addMaterial" asp-controller="Information"><i class="fa fa-plus-square-o"></i> เพิ่ม วัตถุดิบ</a>
+                    <br /><br />
+                </div>
+                <div class="box-body">
+
+                    <table id="example2" class="table table-bordered data_table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">ลำดับ</th>
+                                <th class="text-center">รูป</th>
+                                <th class="text-center">ประเภท</th>
+                                <th class="text-center">รหัส</th>
+                                <th class="text-center">รายการ</th>
+                                <th class="text-center">รายละเอียด</th>
+                                <th class="text-center">ชั้นวางสินค้า</th>
+                                <th class="text-center">กว้าง</th>
+                                <th class="text-center">ยาว</th>
+                                <th class="text-center">หน่วย (รับ)</th>
+                                <th class="text-center">หน่วย (เบิก)</th>
+                                <th class="text-center">จำนวนรับ/เบิก</th>
+                                <th class="text-center"><span><i class="fa fa-gears"></i></span> จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 1;}
+                            @foreach (var item in ViewData["material"] as List<MaterialModel>)
+                            {
+                            <tr>
+                                <td>@i</td>
+                                <td><a href="~/material_img/@item.mtr_img" target="_blank" title="คลิกเพื่อดูรูปภาพ"><img src="~/material_img/@item.mtr_img" width="50px" height="50px" /></a></td>
+                                <td>@item.mtr_ref_tm_id</td>
+                                <td>@item.mtr_code</td>
+                                <td>@item.mtr_name</td>
+                                <td>@item.mtr_detail</td>
+                                <td>@item.mtr_shelf</td>
+                                <td>@item.mtr_width</td>
+                                <td>@item.mtr_long</td>
+                                <td>@item.mtr_unit_get</td>
+                                <td>@item.mtr_unit_expose</td>
+                                <td>@item.mtr_keep_num</td>
+                                <td>
+                                    <a class="btn btn-primary view_mtr" ref="@item.mtr_id"><i class="fa fa-search"></i> แก้ไข</a>
+                                    <a class="btn btn-warning edit_mtr" ref="@item.mtr_id"><i class="fa fa-edit"></i> แก้ไข</a>
+                                    <a class="btn btn-danger del_mtr" ref="@item.mtr_id"><i class="fa fa-trash"></i> ลบ</a>
+                                </td>
+                            </tr>
+                                i++;
+                            }
+                           </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

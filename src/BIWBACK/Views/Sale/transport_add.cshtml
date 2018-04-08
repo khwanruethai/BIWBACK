@@ -1,0 +1,785 @@
+﻿@{
+    Layout = "_Layout";
+}
+<section class="content-header">
+    <h1>
+        ใบขนส่งสินค้า > เพิ่มใบขนส่งสินค้า
+        <small>Preview</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">ค้นหาใบเสนอราคา</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        เลขที่ใบเสนอราคา
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBox("start", "", new { @class = "form-control datepicker" })
+                                    </div>
+                                    <div class="col-md-2">
+                                       เลขที่ใบสั่งผลิต
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBox("end", "", new { @class = "form-control datepicker" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        รหัสลูกค้า
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBox("start", "", new { @class = "form-control datepicker" })
+                                    </div>
+                                    <div class="col-md-2">
+                                        ชื่อลูกค้า
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBox("end", "", new { @class = "form-control datepicker" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        รหัสสินค้า
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBox("start", "", new { @class = "form-control datepicker" })
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <a class="btn btn-primary openSearch"><span class="fa fa-search"></span> ค้นหา</a> 
+                                        <a class="btn btn-danger closeSearch"><span class="fa fa-close"></span> ปิดการค้นหา</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a class="btn btn-primary"><span class="fa fa-truck"></span> เลือกส่งสินค้า</a>
+                                        <a class="btn btn-primary"><span class="fa fa-money"></span> เลือกส่งมัดจำ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <a class="btn btn-primary"><i class="fa fa-save"></i> บันทีก</a>
+                                        <a class="btn btn-danger"><i class="fa fa-trash"></i> ลบ</a>
+                                        <a class="btn btn-warning"><i class="fa fa-arrow-left"></i> ย้อนกลับ</a> <br /><br />
+                                        <a class="btn btn-info"><i class="fa fa-plus-square"></i> เลือกรายการเพิ่ม</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์ใบส่งของ</a>
+                                        <a class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์ใบกำกับภาษี</a>
+                                        <a class="btn btn-primary"><i class="fa fa-calculator"></i> พิมพ์สติกเกอร์</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @Html.CheckBox("a", new { @checked = "true" }) ราคาในใบส่งของ <br />
+                                        @Html.CheckBox("a", new { @checked = "true" }) แสดงชื่อสินค้าในใบส่งของ <br />
+                                        @Html.CheckBox("a", new { @checked = "true" }) แสดง คชจ. เพิ่มเติมใบกำกับภาษี <br />
+                                        @Html.CheckBox("a", new { @checked = "true" })ไม่แสดงที่อยู่บริษัท <br />
+                                        @Html.CheckBox("a", new { @checked = "true" }) ใบกำกับภาษีเหมือนใบส่งของ <br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="box box-info boxOpen">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายการส่งสินค้าทั้งหมด</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">รายการ</a></li>
+
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>วันที่</th>
+                                                <th>เลขที่ใบเสนอราคา</th>
+                                                <th>เลขที่อ้างอิง</th>
+                                                <th>ชื่อลูกค้า</th>
+                                                <th>ชื่อผู้ติดต่อ</th>
+                                                <th>หมายเหตุ</th>
+                                                <th>VAT(%)</th>
+                                                <th>มูลค่าก่อน VAT</th>
+                                                <th>สุทธิ</th>
+                                                <th>เครื่องมือ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-check"></span> เลือกรายการ</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-check"></span> เลือกรายการ</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-check"></span> เลือกรายการ</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-check"></span> เลือกรายการ</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-check"></span> เลือกรายการ</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                </td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td>
+                                                    <a class="btn btn-primary"><span class="fa fa-check"></span> เลือกรายการ</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>+
+                            <!-- /.tab-pane -->
+                            <!-- /.tab-pane -->
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+
+                </div>
+                <!-- /.box-header -->
+                <!-- /.box-body -->
+                <!-- /.box-footer -->
+            </div>
+
+
+            <!--form-->
+            <div class="box box-info boxClose">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายละเอียด</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">รายการ</a></li>
+
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <div class="table-responsive">
+                                    
+                                    <div class="col-lg-12">
+                                        <div class="col-md-6 col-lg-6">
+                                            <h4>ข้อมูลใบขนส่ง</h4>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                       วันที่ส่งสินค้า
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class="form-control datepicker"})
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        เลขที่ใบขนส่ง
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        กำหนดชำระเงิน
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        เงื่อนไขชำระเงิน
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        เลขที่เสนอราคา
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ลูกค้า
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.DropDownList("a", new List<SelectListItem> { new SelectListItem { Text = "C0001 นายสมชาย ทองเอก" }, new SelectListItem { Text = "C0002 นายสมหมาย มีนา" } }, new { @class = "form-control select2" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ที่อยู่
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextArea("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ชื่อผู้ติดต่อ
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        เบอร์โทร
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        หมายเหตุ
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                       พนักงานขาย
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("a",new List<SelectListItem> { new SelectListItem { Text="Tele-Sale"} }, new { @class = "form-control select2" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ผู้จ่ายสินค้า
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("a", new List<SelectListItem> { new SelectListItem { Text = "Tele-Sale" } }, new { @class = "form-control select2" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        เบอร์ติดต่อ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ผู้ส่งสินค้า
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("a", new List<SelectListItem> { new SelectListItem { Text = "Tele-Sale" } }, new { @class = "form-control select2" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ผู้จัดทำ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("a", new List<SelectListItem> { new SelectListItem { Text = "Tele-Sale" } }, new { @class = "form-control select2" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ผู้อนุมัติ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.DropDownList("a", new List<SelectListItem> { new SelectListItem { Text = "Tele-Sale" } }, new { @class = "form-control select2" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    
+                                                    <div class="col-md-offset-6 col-md-2">
+                                                        ผู้รับของ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---->
+                                        <div class="col-md-6 col-lg-6">
+                                            <h4>สถานที่จัดส่ง</h4>
+                                            <hr />
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ชื่อผู้รับสินค้า
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ที่อยู่
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ถนน
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ตำบล/แขวง
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        อำเภอ/เขต
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        จังหวัด
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ไปรษณีย์
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <h4>Total</h4>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                       Vat(%)
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        รวมเงิน
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        Tax (%)
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ลดพิเศษ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        ลดพิเศษ (%)
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        Vat
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        รวม(%)
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        ภาษี
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        รวมส่วนลด
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        สุทธิ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        หักเงินมัดจำ
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @Html.TextBox("a", "", new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-offset-2 col-md-4">
+                                                      @Html.CheckBox("a") ใบมัดจำ
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <!-- /.tab-pane -->
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+
+                </div>
+                <!-- /.box-header -->
+                <!-- /.box-body -->
+                <!-- /.box-footer -->
+            </div>
+            <!--end form-->
+        </div>
+        <div class="col-md-12">
+
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-print"></i> รายการผลิต</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">รายการสินค้า</a></li>
+                            <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">ค่าใช้จ่ายเพิ่มเติม</a></li>
+                           
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <table class="table table-bordered table-responsive">
+                                    <tr>
+                                        <th colspan="8"></th>
+                                        <th colspan="2">ด้านปรับ(จำนวน)</th>
+                                        <th colspan="11"></th>
+                                    </tr>
+                                    <tr>
+                                        <th>ลำดับ</th>
+                                        <th>รหัสสินค้า</th>
+                                        <th>ชื่อสินค้า</th>
+                                        <th>ห้อง</th>
+                                        <th>สี</th>
+                                        <th>รายละเอียด</th>
+                                        <th>กว้าง</th>
+                                        <th>ยาว</th>
+                                        <th>ขวา</th>
+                                        <th>ซ้าย</th>
+                                        <th>จำนวน</th>
+                                        <th>หน่วย</th>
+                                        <th>ราคา:หน่วย</th>
+                                        <th>ราคารวม</th>
+                                        <th>ลด1(%)</th>
+                                        <th>ลด2(%)</th>
+                                        <th>ลด3(%)</th>
+                                        <th>ลด4(%)</th>
+                                        <th>ลด5(%)</th>
+                                        <th>ส่วนลด</th>
+                                        <th>ราคาสุทธิ</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_2">
+                               <table class="table table-bordered">
+                                   <tr>
+                                       <th colspan="6"></th>
+                                       <th colspan="4"></th>
+                                       <th colspan="5">อัตราส่วนลด(%)</th>
+                                       <th colspan="2"></th>
+                                   </tr>
+                                   <tr>
+                                       <th>รหัส</th>
+                                       <th>รายการค่าใช้จ่าย</th>
+                                       <th>รายละเอียด</th>
+                                       <th>กว้าง</th>
+                                       <th>ยาว</th>
+                                       <th>ราคา(ตรม.)</th>
+                                       <th>จำนวน</th>
+                                       <th>หน่วย</th>
+                                       <th>ราคา:หน่วย</th>
+                                       <th>ราคารวม</th>
+                                       <th>ลด1</th>
+                                       <th>ลด2</th>
+                                       <th>ลด3</th>
+                                       <th>ลด4</th>
+                                       <th>ลด5</th>
+                                       <th>ส่วนลด</th>
+                                       <th>ราคาสุทธิ</th>
+                                   </tr>
+                               </table>
+                            </div>
+                            <!-- /.tab-pane -->
+                           
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/lib/jquery/dist/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('.boxOpen').show();
+        $('.boxClose').hide();
+
+
+    })
+    $(document).on('click','.openSearch', function () {
+
+        $('.boxOpen').show();
+        $('.boxClose').hide();
+
+
+    })
+    $(document).on('click', '.closeSearch', function () {
+
+
+        $('.boxOpen').hide();
+        $('.boxClose').show();
+
+    })
+</script>
